@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { places } from "./index";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+
+import places from "../context/places";
 
 export default function Place() {
   let router = useRouter();
@@ -138,6 +139,17 @@ export default function Place() {
   );
 }
 
+
+/** Pre-Render Paths. 
+ * 
+ *  When you export a function called getStaticPaths (Static Site Generation)
+ *  from a page that uses dynamic routes, Next.js will statically pre-render 
+ *  all the paths specified by getStaticPaths.
+ * 
+ * @returns 
+ * 
+ * @Resources API - https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
+ */
 export function getStaticPaths() {
   return {
     paths: places.map((place) => ({ params: { placeId: place.id } })),
