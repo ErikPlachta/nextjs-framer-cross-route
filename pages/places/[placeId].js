@@ -8,15 +8,45 @@ import places from "./context/places";
 
 export default function Place() {
   let router = useRouter();
+  let pageAnimations = useAnimation();
+  
+  /**  Get place from slug 
+   * 
+  */
   let [id] = useState(router.query.placeId);
+  
   let place = places.find((p) => p.id === id);
 
-  let didStart = useRef(false);
-  let pageAnimations = useAnimation();
 
+  /** Flag to verify page is rendered for the first time, and should call `startScrolling()`.
+   * 
+   * When `useEffect` runs, if `didStart` is false, the function `startScrolling`
+   * sets `didStart` to `true`, and the pageAnimation `showing` is started.
+   * 
+  */
+  let didStart = useRef(false); 
+  let scrollFinished = useRef(false);
+  
+  /** Conditional animation to scroll to top of page if needed.
+   * 
+   * This function is used only if the scroll position is not at the top of the
+   * page. Otherwise, the pageAnimation `showing` is started by useEffect.
+   * 
+   * ---
+   * 
+   * ### Logic:
+   * 
+   * 1. Get current scroll position.
+   * 2. Animate scroll to top of page.
+   * 3. then start Framer animation `showing`.
+   * 
+   */
   let startScrolling = () => {
-    didStart.current = true;
+    // didStart.current = true;
+    
+    //-- Get number of pixels to top.
     let current = document.documentElement.scrollTop;
+    //-- Where to end up
     let to = 0;
 
     animate(current, to, {
@@ -24,28 +54,39 @@ export default function Place() {
       onUpdate(latest) {
         if (router.pathname === "/places/[placeId]") {
           requestAnimationFrame(() => {
-            window.scrollTo(0, latest);
+            window.scrollTo(to, latest);
           });
         }
       },
       onComplete() {
-        if (router.pathname === "/places/[placeId]") {
-          pageAnimations.start("showing");
-        }
+        scrollFinished.current = true;
+        // console.log("on complete")
+        // if (router.pathname === "/places/[placeId]") {
+          // pageAnimations.start("showing");
+          // let id = setTimeout(() => {
+          //   if (router.pathname === "/places/[placeId]") {
+          //       pageAnimations.start("showing");    //-- so start Framer animation showing content.
+          //       console.log("scrolling timeout")
+          //   }
+          // }, process.env.PLACE_ANIMATION_DELAY);  //-- Delay before showing content
+        // }
       },
     });
   };
 
+
   useEffect(() => {
-    let id = setTimeout(() => {
-      if (!didStart.current) {
-        pageAnimations.start("showing");
-      }
-    }, 300);
+    
+    /** Checking to see if page animation should be managed by `useEffect` or `startScrolling`. */
+    let id = setTimeout(() => {             
+      //-- IF `startScrolling` isn't called, THEN start Framer animation showing content.
+      if (!didStart.current) pageAnimations.start("showing");
+    }, process.env.PLACE_ANIMATION_DELAY);
 
     return () => clearTimeout(id);
-  }, [pageAnimations]);
+  }, [pageAnimations]); //-- CHECK every time pageAnimations change to ensure content is shown.
 
+  //-- Render Place
   return (
     <div>
       <div>
@@ -140,7 +181,7 @@ export default function Place() {
 }
 
 
-/** Pre-Render Paths. 
+/** Pre-Render Place's Path by ID to update slug in URL.
  * 
  *  When you export a function called getStaticPaths (Static Site Generation)
  *  from a page that uses dynamic routes, Next.js will statically pre-render 

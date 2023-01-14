@@ -4,7 +4,7 @@
  * @property {string} id        - Page slug.
  * @property {string} name      - Images Alt and Source.
  * @property {string} image     - Path to image in public assets.
- * @property {string} position  - Framer style for image's `objectPosition`.
+ * @property {string} position  - Image objectPosition in parent element.
  * @property {string} blend     - Tailwinds className style for gradient background behind images.
  * @property {string} about     - The about text of the place.
  * 

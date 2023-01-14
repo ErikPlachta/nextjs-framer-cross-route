@@ -1,7 +1,7 @@
 {
   "name": "route-animation-demo",
   "version": "0.1.0",
-  "author" : "Ryan Toronto",
+  "author": "Ryan Toronto",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,6 +20,8 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "prettier": "^2.8.2",
