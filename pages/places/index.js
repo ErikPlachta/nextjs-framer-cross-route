@@ -16,7 +16,22 @@ export default function Places() {
 
   return (
     
-      <div className="flex flex-col p-5 m-2 rounded bg-slate-200 gap-2 shadow-sm shadow-slate-500">
+      <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-2 shadow-sm shadow-slate-500">
+        <motion.div
+            layoutId={`title-h1}`}
+            transition={{ ease: "easeOut" }}
+            initial={{ color: "#f8fafc" }}
+            animate={{ color: "#111827" }}
+            className="relative z-10"
+          >
+            <motion.h1
+              className="block text-5xl font-semibold tracking-tighter"
+              layout
+            >
+              Places
+            </motion.h1>
+          </motion.div>
+
         {places.map((place) => (
           <Link
             key={place.id}
@@ -30,7 +45,7 @@ export default function Places() {
              * 
             */}
             <motion.a
-              className="relative block mx-2 shadow-3/1"
+              className="relative block mx-2 shadow-black drop-shadow-md overflow-hidden"
               initial="hidden"
               animate="showing"
               exit={place.id === goingToPlace ? "showing" : "hidden"}
@@ -56,13 +71,14 @@ export default function Places() {
               */}
               <motion.div
                 layoutId={`photo-${place.id}`}
-                className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden rounded`}
+                className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden rounded-md`}
                 transition={{ ease: "easeOut" }}
                 initial={{ height:  imageHeightFrom}}
                 animate={{ height: ImageHeightTo }}
                 style={{ originX: 0.5 }}
                 
               >
+                
                 {/** Image of place.
                  * 
                  */}
