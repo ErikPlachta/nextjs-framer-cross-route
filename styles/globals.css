@@ -1,3 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    
+    /** FONTS ------*/
+    --ff-body: 'Roboto', sans-serif;
+    --ff-heading: 'Roboto', sans-serif;
+    --ff-code: 'Roboto Mono', monospace;
+    
+
+    /** COLORS ------*/
+
+    
+    --color-0: hsl(225, 73%, 57%);
+    --color-1-alt: #243c5a; /* Regal Blue */
+    --color-1: #00296B; /* Royal Blue Dark */
+    --color-2: #005A92; /* Lapis Lazuli */
+    --color-3: #4169E1; /* Royal Blue Light */
+    --color-4: #FDC500; /* Golden Poppy */
+    --color-5: #FFD500; /*Gold Web Golden */
+    
+
+
+    --color-primary: var(--color-1);
+    --color-secondary: var(--color-2);
+    --color-tertiary: var(--color-3);
+    --color-quaternary: var(--color-4);
+    --color-quinary: var(--color-5);
+
+    --color-accent: var(--color-0);
+    
+
+
+    /* --color-bdy-bg: var(--color-primary);
+    --color-bdy-fnt: #1e1e1e;
+    --color-bdy-fnt-alt: #1e1e1e;
+    --color-bdy-fnt-alt2: #1e1e1e; */
+
+    
+}
+
+
+/** NORMALIZING --------------------------------------------------------------*/
+
+*, *::after, ::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    vertical-align: baseline;
+}
+
+/******************************************************************************/
+body {
+    font-family: var(--ff-body);
+    color: var(--color-bdy-fnt);
+    accent-color: var(--accent-color);
+    font-size: var(--fs-500);
+    
+
+    scroll-behavior: smooth;
+    
+    /* Disabling user selection */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+      
+}
+
+/******************************************************************************/
+#root { /* Container for the application excluding the header and footer. */
+    height: calc( 100vh - var(--header-height) - var(--footer-height) );
+}
+ 

@@ -3,13 +3,20 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import places from "./context/places"; 
 
+
+/** Places Page.
+ * 
+ */
 export default function Places() {
   let router = useRouter();
   let goingToPlace = router.query.id;
 
+  let imageHeightFrom = '100vh';
+  let ImageHeightTo   = '25vh';
+
   return (
-    <div>
-      <div className="flex flex-col">
+    
+      <div className="flex flex-col p-5 m-2 rounded bg-slate-200 gap-2 shadow-sm shadow-slate-500">
         {places.map((place) => (
           <Link
             key={place.id}
@@ -18,8 +25,12 @@ export default function Places() {
             scroll={false}
             legacyBehavior
           >
+            
+            {/** Parent Element around each place.
+             * 
+            */}
             <motion.a
-              className="relative block"
+              className="relative block mx-2 shadow-3/1"
               initial="hidden"
               animate="showing"
               exit={place.id === goingToPlace ? "showing" : "hidden"}
@@ -28,18 +39,33 @@ export default function Places() {
                   opacity: 0,
                 },
                 showing: {
+                  opacity: .9,
+                  filter: 'brightness(90%)'
+                },
+                whileHover: {
+                  scale: 1.025,
                   opacity: 1,
+                  filter: 'brightness(100%)'
                 },
               }}
+              whileHover={'whileHover'}
             >
+              
+              {/** Container around image with gradient/blended background.
+               * 
+              */}
               <motion.div
                 layoutId={`photo-${place.id}`}
-                className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden`}
+                className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden rounded`}
                 transition={{ ease: "easeOut" }}
-                initial={{ height: 600 }}
-                animate={{ height: 400 }}
+                initial={{ height:  imageHeightFrom}}
+                animate={{ height: ImageHeightTo }}
                 style={{ originX: 0.5 }}
+                
               >
+                {/** Image of place.
+                 * 
+                 */}
                 <motion.img
                   layoutId={`image-${place.id}`}
                   transition={{ ease: "easeOut" }}
@@ -47,10 +73,10 @@ export default function Places() {
                   alt={place.name}
                   className="absolute w-full object-cover mix-blend-soft-light"
                   initial={{
-                    height: 600,
+                    height: imageHeightFrom,
                   }}
                   animate={{
-                    height: 400,
+                    height: ImageHeightTo,
                   }}
                   style={{
                     originX: 1,
@@ -58,6 +84,10 @@ export default function Places() {
                   }}
                 />
               </motion.div>
+              
+              {/** Container around Place Name.
+               * 
+              */}
               <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
                 <motion.div
                   layoutId={`title-${place.id}`}
@@ -65,7 +95,7 @@ export default function Places() {
                   animate={{ color: "#f8fafc" }}
                 >
                   <motion.h1
-                    className="block text-5xl font-semibold tracking-tighter"
+                    className="block text-2xl font-semibold tracking-tighter"
                     layout
                   >
                     {place.name}
@@ -76,6 +106,5 @@ export default function Places() {
           </Link>
         ))}
       </div>
-    </div>
   );
 };

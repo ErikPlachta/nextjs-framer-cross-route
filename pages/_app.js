@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Route animations</title>
       </Head>
-      <div className={`${inter.className} min-h-[2000px]`}>
+      <div className={`${inter.className} flex flex-col max-h-0 bg-slate-300`}>
         <AnimatePresence initial={false} mode="wait">
           <Component {...pageProps} />
         </AnimatePresence>
