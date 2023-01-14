@@ -25,7 +25,7 @@ export default function Places() {
             className="relative z-10"
           >
             <motion.h1
-              className="block text-5xl font-semibold tracking-tighter"
+              className="block text-5xl tracking-tighter pb-10"
               layout
             >
               Places
