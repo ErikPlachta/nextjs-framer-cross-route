@@ -4,7 +4,7 @@ import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-import places from "../context/places";
+import places from "./context/places";
 
 export default function Place() {
   let router = useRouter();
@@ -22,14 +22,14 @@ export default function Place() {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (router.pathname === "/[placeId]") {
+        if (router.pathname === "/places/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(0, latest);
           });
         }
       },
       onComplete() {
-        if (router.pathname === "/[placeId]") {
+        if (router.pathname === "/places/[placeId]") {
           pageAnimations.start("showing");
         }
       },
@@ -50,7 +50,7 @@ export default function Place() {
     <div>
       <div>
         <div className="relative px-6">
-          <Link href="/" passHref scroll={false} legacyBehavior>
+          <Link href="/places" passHref scroll={false} legacyBehavior>
             <motion.a
               className="absolute top-0 left-0 z-10 mt-3 ml-4 flex items-center space-x-2 text-gray-50"
               initial="hidden"
