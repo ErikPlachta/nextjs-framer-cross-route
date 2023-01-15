@@ -59,7 +59,7 @@ export default function Place() {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (router.pathname === "/places/[placeId]") {
+        if (router.pathname === "/places-new/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(to, latest);
           });
@@ -107,7 +107,7 @@ export default function Place() {
   //-- Render Place
   return (
       <div className="relative px-6">
-        <Link href="/places" passHref scroll={false} legacyBehavior>
+        <Link href="/places-new" passHref scroll={false} legacyBehavior>
           <motion.a
             className="absolute top-0 left-0 z-10 mt-3 ml-4 flex items-center  gap-1 text-gray-50 bg-slate-600 bg-opacity-50 rounded-md px-3 py-2 text-sm font-medium hover:bg-opacity-75"
             initial="hidden"

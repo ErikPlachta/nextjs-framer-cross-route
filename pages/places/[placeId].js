@@ -28,7 +28,7 @@ export default function Place() {
         }
       },
       onComplete() {
-        if (router.pathname === "/[placeId]") {
+        if (router.pathname === "/places/[placeId]") {
           pageAnimations.start("showing");
         }
       },
@@ -78,7 +78,7 @@ export default function Place() {
               transition={{ ease: "easeOut" }}
               src={place.image}
               alt={place.name}
-              className="absolute w-full object-cover mix-blend-soft-light"
+              className="absolute w-full object-cover"
               initial={{
                 height: 400,
               }}

@@ -89,4 +89,3 @@ body {
 #root { /* Container for the application excluding the header and footer. */
     height: calc( 100vh - var(--header-height) - var(--footer-height) );
 }
- 
