@@ -4,7 +4,7 @@ import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-import getPlaces from "./context/places";
+import getPlaces from "../../context/places";
 
 
 /** Each individual place. */

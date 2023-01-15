@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/places/[placeId].js"  ],
+, "pages/places/[placeId].js", "context/places.ts"  ],
   "exclude": [
     "node_modules"
   ]

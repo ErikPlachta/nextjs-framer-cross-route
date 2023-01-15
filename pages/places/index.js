@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import getPlaces from "./context/places"; 
+import getPlaces from "../../context/places"; 
 
 
 /** Places Page.
@@ -82,10 +82,9 @@ export default function Places() {
                   opacity: 0,
                 },
                 showing: {
-                  opacity: .95,
+                  opacity: 1,
                 },
                 whileHover: {
-                  opacity: 1,
                   transform: 'translateY(-1px)',
                 },
               }}
