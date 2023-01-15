@@ -2,70 +2,33 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
+import Header from "../components/Header";
+
 export default function Home() {
   let router = useRouter();
 
   return (
     <div>
-      <div className="flex flex-col">
+      <Header titlePre='Index' />
+      <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         {/* TODO:: Add my own here? */}
-        <h1>Places Concept</h1>
-
-        <Link href="/places" passHref>
-          {/* <motion.a
-            className="relative block"
-            initial="hidden"
-            animate="showing"
-            exit="hidden"
-            variants={{
-              hidden: {
-                opacity: 0,
-              },
-              showing: {
-                opacity: 1,
-              },
-            }}
-          > */}
-            <motion.div
-              layoutId={`places-original`}
-              className={`relative bg-gradient-to-tr from-blue-400 to-blue-600 overflow-hidden p-4 m-4`}
-              transition={{ ease: "easeOut" }}
-              initial={{ height: 200 }}
-              animate={{ height: 200 }}
-              style={{ originX: 0.5 }}
+        <motion.h1
+              className="block text-5xl tracking-tighter pb-10"
             >
-              Places - Original
-            </motion.div>
-          {/* </motion.a> */}
-        </Link>
+              Places
+            </motion.h1>
 
-        <Link href="/places-new" passHref>
-          {/* <motion.a
-            className="relative block"
-            initial="hidden"
-            animate="showing"
-            exit="hidden"
-            variants={{
-              hidden: {
-                opacity: 0,
-              },
-              showing: {
-                opacity: 1,
-              },
-            }}
-          > */}
-            <motion.div
-              layoutId={`places-new`}
-              className={`relative bg-gradient-to-tr from-blue-400 to-blue-600 overflow-hidden p-4 m-4`}
-              transition={{ ease: "easeOut" }}
-              initial={{ height: 600 }}
-              animate={{ height: 200 }}
-              style={{ originX: 0.5 }}
-            >
-              Places - New
-            </motion.div>
-          {/* </motion.a> */}
-        </Link>
+
+        <motion.div
+          layoutId={`places-original`}
+          className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}
+          transition={{ ease: "easeOut" }}
+          initial={{ height: 200 }}
+          animate={{ height: 200 }}
+          style={{ originX: 0.5 }}
+        >
+          Taking the concept of places and making it my own.
+        </motion.div>
 
       </div>
     </div>

@@ -1,0 +1,10 @@
+
+/** Nav Elements */
+.wrapper nav ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    flex: 100%;
+    justify-content: space-evenly;
+}
