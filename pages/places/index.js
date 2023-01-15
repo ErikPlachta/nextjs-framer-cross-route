@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -11,12 +12,36 @@ export default function Places() {
   let router = useRouter();
   let goingToPlace = router.query.id;
 
-  let imageHeightFrom = '100vh';
-  let ImageHeightTo   = '25vh';
+  
+  //-- Starts full screen, then shrinks.
+  let imageHeightFrom   = '0px';
+  //-- Image to never be more than max. 
+  let imageHeightToMax  = 200;
+  //-- Defined to 25vh OR imageHeightToMax if meets max
+  let imageHeightTo = useRef(imageHeightToMax);
 
+
+  //-- Set imageHeightTo to 25% of maxHeight or less based on viewport.
+  useEffect(() => {
+    
+    const vw = window.innerHeight * .25
+    
+    console.log(vw)
+
+    if(vw > imageHeightToMax) {
+      imageHeightTo.current = imageHeightToMax + 'px';
+    }
+    else {
+      imageHeightTo.current = window.innerHeight * .25 + 'px';
+    }
+    console.log(imageHeightTo.current)
+  }, [imageHeightTo]);
+
+
+  //-- Render
   return (
     
-      <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-2 shadow-sm shadow-slate-500">
+      <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         <motion.div
             layoutId={`title-h1}`}
             transition={{ ease: "easeOut" }}
@@ -45,7 +70,8 @@ export default function Places() {
              * 
             */}
             <motion.a
-              className="relative block mx-2 shadow-black drop-shadow-md overflow-hidden"
+              // className="relative block mx-2 overflow-hidden rounded shadow-[1px_1px_2px_1px_rgba(0,0,0,0.4)]"
+              className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
               initial="hidden"
               animate="showing"
               exit={place.id === goingToPlace ? "showing" : "hidden"}
@@ -54,13 +80,11 @@ export default function Places() {
                   opacity: 0,
                 },
                 showing: {
-                  opacity: .9,
-                  filter: 'brightness(90%)'
+                  opacity: .95,
                 },
                 whileHover: {
-                  scale: 1.025,
                   opacity: 1,
-                  filter: 'brightness(100%)'
+                  transform: 'translateY(-1px)',
                 },
               }}
               whileHover={'whileHover'}
@@ -73,8 +97,12 @@ export default function Places() {
                 layoutId={`photo-${place.id}`}
                 className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden rounded-md`}
                 transition={{ ease: "easeOut" }}
-                initial={{ height:  imageHeightFrom}}
-                animate={{ height: ImageHeightTo }}
+                initial={{ 
+                  height: imageHeightFrom,
+                }}
+                animate={{ 
+                  height: imageHeightTo.current,
+                }}
                 style={{ originX: 0.5 }}
                 
               >
@@ -84,7 +112,7 @@ export default function Places() {
                  */}
                 <motion.img
                   layoutId={`image-${place.id}`}
-                  transition={{ ease: "easeOut" }}
+                  transition={{ ease: "easeInOut" }}
                   src={place.image}
                   alt={place.name}
                   className="absolute w-full object-cover mix-blend-soft-light"
@@ -92,7 +120,7 @@ export default function Places() {
                     height: imageHeightFrom,
                   }}
                   animate={{
-                    height: ImageHeightTo,
+                    height: imageHeightTo.current,
                   }}
                   style={{
                     originX: 1,
@@ -107,7 +135,7 @@ export default function Places() {
               <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
                 <motion.div
                   layoutId={`title-${place.id}`}
-                  transition={{ ease: "easeOut" }}
+                  transition={{ ease: "easeInOut" }}
                   animate={{ color: "#f8fafc" }}
                 >
                   <motion.h1

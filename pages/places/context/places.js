@@ -1,3 +1,5 @@
+// import React from "react";
+
 /** Array of places containing each pages content.
  * 
  * @typedef {Object} Place
@@ -10,8 +12,7 @@
  * 
  */
 // export const places = [
-export function places(){
-    return [
+const places = [
     {
       id: "lake-como",
       name: "Lake Como",
@@ -39,7 +40,6 @@ export function places(){
       about:
         "New York, often called New York City[a] or NYC, is the most populous city in the United States. With a 2020 population of 8,804,190 distributed over 300.46 square miles (778.2 km2), New York City is also the most densely populated major city in the United States, and is more than twice as populous as second-place Los Angeles. New York City lies at the southern tip of New York State, and constitutes the geographical and demographic center of both the Northeast megalopolis and the New York metropolitan area, the largest metropolitan area in the world by urban landmass.[8] With over 20.1 million people in its metropolitan statistical area and 23.5 million in its combined statistical area as of 2020, New York is one of the world's most populous megacities, and over 58 million people live within 250 mi (400 km) of the city.[9] New York City is a global cultural, financial, entertainment, and media center with a significant influence on commerce, health care and life sciences,[10] research, technology,[11] education, politics, tourism, dining, art, fashion, and sports. Home to the headquarters of the United Nations, New York is an important center for international diplomacy,[12][13] an established safe haven for global investors, and is sometimes described as the capital of the world.",
     },
-  ];
-}
+];
 
-module.exports = places();
+module.exports = places;
