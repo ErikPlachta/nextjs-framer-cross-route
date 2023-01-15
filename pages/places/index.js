@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import places from "./context/places"; 
+import getPlaces from "./context/places"; 
 
 
 /** Places Page.
@@ -11,6 +11,8 @@ import places from "./context/places";
 export default function Places() {
   let router = useRouter();
   let goingToPlace = router.query.id;
+  
+  const places = getPlaces();
 
   
   //-- Starts full screen, then shrinks.
@@ -26,7 +28,7 @@ export default function Places() {
     
     const vw = window.innerHeight * .25
     
-    console.log(vw)
+    // console.log(vw)
 
     if(vw > imageHeightToMax) {
       imageHeightTo.current = imageHeightToMax + 'px';
@@ -34,7 +36,7 @@ export default function Places() {
     else {
       imageHeightTo.current = window.innerHeight * .25 + 'px';
     }
-    console.log(imageHeightTo.current)
+    // console.log(imageHeightTo.current)
   }, [imageHeightTo]);
 
 

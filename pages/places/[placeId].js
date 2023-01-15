@@ -4,13 +4,16 @@ import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-import places from "./context/places";
+import getPlaces from "./context/places";
 
-/** Eah individual place. */
+
+/** Each individual place. */
 export default function Place() {
   let router = useRouter();
   let pageAnimations = useAnimation();
   
+  const places = getPlaces();
+
   /**  Get place from slug 
    * 
   */
@@ -205,6 +208,9 @@ export default function Place() {
  * @Resources API - https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
  */
 export function getStaticPaths() {
+  
+  const places = getPlaces();
+
   return {
     paths: places.map((place) => ({ params: { placeId: place.id } })),
     fallback: false,
