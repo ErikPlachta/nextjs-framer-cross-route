@@ -27,7 +27,7 @@ export default function Home() {
           animate={{ height: 200 }}
           style={{ originX: 0.5 }}
         >
-          Taking the concept of places and making it my own.
+          A cross-origin animation solution using NextJs and Framer-Motion.
         </motion.div>
 
       </div>
