@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import getPlaces from "../../context/places"; 
 
-import Header from "../../components/Header";
+import Header from "../../components/header";
 
 
 /** Places Page.
