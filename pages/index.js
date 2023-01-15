@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
-import Header from "../components/Header";
+import Header from "../components/header";
 
 export default function Home() {
   let router = useRouter();
