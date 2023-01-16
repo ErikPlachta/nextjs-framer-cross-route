@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import ExtLink from "../components/ext-link";
 
 import Header from "../components/header";
 
@@ -15,7 +16,15 @@ export default function Home() {
           Places
         </h1>
         <div className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}>
-          A cross-origin animation solution using NextJs and Framer-Motion.
+          A cross-origin animation solution built by {` `}
+          <ExtLink  href="https://github.com/ryanto/fmr-next-cross-route"
+                    className='underline text-blue-500 hover:text-blue-700'
+          >
+            Ryan Toronto
+          </ExtLink>
+          , used to demonstrate how Framer-Motion can be used to create a
+          cross-origin animation solution using in NextJs.
+
         </div>
 
       </div>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import getPlaces from "../../context/places"; 
 
 import Header from "../../components/header";
+import ExtLink from "../../components/ext-link";
 
 
 /** Places Page.
@@ -49,30 +50,20 @@ export default function Places() {
       {/* <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
       <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
 
-        <motion.div
-            layoutId={`title-h1}`}
-            transition={{ ease: "easeOut" }}
-            initial={{ color: "#f8fafc" }}
-            animate={{ color: "#111827" }}
-            className="relative z-10"
-          >
-            <h1
-              className="block text-5xl tracking-tighter pb-10"
+        <div className="relative z-10" >
+          <h1 className="block text-5xl tracking-tighter pb-10" >
+            Places - Updated
+          </h1>
+          <div className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}>
+            Redesign of Ryan's example, by {` `}
+            <ExtLink  href='https://github.com/erikplachta'
+                      className='underline text-blue-500 hover:text-blue-700'
             >
-              Places - Updated
-            </h1>
-
-            <motion.div
-              layoutId={`places-original`}
-              className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}
-              transition={{ ease: "easeOut" }}
-              // initial={{ height: 200 }}
-              // animate={{ height: 200 }}
-              style={{ originX: 0.5 }}
-            >
-              Redesign of the original places concept.
-            </motion.div>
-          </motion.div>
+              Erik Plachta
+            </ExtLink>
+            , to learn more about Framer-Motion, NextJs, and CrossOrigin animations.
+          </div>
+        </div>
 
         {places.map((place) => (
           <Link

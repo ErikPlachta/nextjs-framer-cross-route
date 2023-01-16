@@ -27,14 +27,13 @@ export default function Home() {
           // animate={{ height: 200 }}
           style={{ originX: 0.5 }}
         >
-          Original Concept built by {` `}
-          <ExtLink 
-            className='underline text-blue-500 hover:text-blue-700'
-            href="https://github.com/ryanto"
+          MVP original concept built by {` `}
+          <ExtLink  href="https://github.com/ryanto/fmr-next-cross-route"
+                    className='underline text-blue-500 hover:text-blue-700'
           >
             Ryan Toronto
           </ExtLink>
-          .
+          , with some very minor animation and style tweaks to accommodate my layout.
         </motion.div>
       {/* </div>
       <div className="flex flex-col"> */}
