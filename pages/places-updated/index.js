@@ -45,7 +45,7 @@ export default function Places() {
   //-- Render
   return (
     <div>
-      <Header titlePre='Places - New' />,
+      <Header titlePre='Places - New' />
       {/* <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
       <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
 
@@ -56,11 +56,11 @@ export default function Places() {
             animate={{ color: "#111827" }}
             className="relative z-10"
           >
-            <motion.h1
+            <h1
               className="block text-5xl tracking-tighter pb-10"
             >
               Places - Updated
-            </motion.h1>
+            </h1>
 
             <motion.div
               layoutId={`places-original`}
@@ -154,12 +154,12 @@ export default function Places() {
                   transition={{ ease: "easeInOut" }}
                   animate={{ color: "#f8fafc" }}
                 >
-                  <motion.h1
+                  <h1
                     className="block text-2xl font-semibold tracking-tighter"
-                    layout
+                   
                   >
                     {place.name}
-                  </motion.h1>
+                  </h1>
                 </motion.div>
               </div>
             </motion.a>
