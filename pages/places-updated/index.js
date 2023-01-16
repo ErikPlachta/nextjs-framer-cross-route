@@ -26,6 +26,8 @@ export default function Places() {
   //-- Defined to 25vh OR imageHeightToMax if meets max
   let imageHeightTo = useRef(imageHeightToMax);
 
+  let imageOffset = useRef(0);
+
 
   //-- Set imageHeightTo to 25% of maxHeight or less based on viewport.
   useEffect(() => {
@@ -56,7 +58,7 @@ export default function Places() {
       <Header titlePre='Places - New' />
 
       <div>
-        <div className="flex flex-col p-4 my-10 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
+        <div className="flex flex-col p-4 my-10 gap-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500">
         {/* <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
         {/* <div className="flex flex-col p-4 my-10 m-auto rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
 
