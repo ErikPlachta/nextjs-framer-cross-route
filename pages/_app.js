@@ -12,11 +12,11 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Home | CrossOrigin Animation with Framer-Motion</title>
       </Head>
-      <div className={`${inter.className} flex flex-col max-h-0 bg-slate-300`}>
+      <main className={`${inter.className} flex flex-col max-h-0 bg-slate-300`}>
         <AnimatePresence initial={false} mode="wait">
           <Component {...pageProps} />
         </AnimatePresence>
-      </div>
+      </main>
     </>
   );
 }

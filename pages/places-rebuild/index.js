@@ -63,10 +63,11 @@ export default function Places() {
         {/* <div className="flex flex-col p-4 my-10 m-auto rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
 
           <div className="relative z-10" >
-            <h1 className="block text-5xl tracking-tighter pb-10" >
+            <h1 className="page--title" >
+            {/* <h1 className="block text-5xl tracking-tighter pb-10" > */}
               Places - Updated
             </h1>
-            <div className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}>
+            <div className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}>
               Redesign of Ryan&#39;s example, by {` `}
               <ExtLink  href='https://github.com/erikplachta'
                         className='underline text-blue-500 hover:text-blue-700'
@@ -159,12 +160,12 @@ export default function Places() {
                     transition={{ ease: "easeInOut" }}
                     animate={{ color: "#f8fafc" }}
                   >
-                    <h1
+                    <h2
                       className="block text-2xl font-semibold tracking-tighter"
                     
                     >
                       {place.name}
-                    </h1>
+                    </h2>
                   </motion.div>
                 </div>
               </motion.a>

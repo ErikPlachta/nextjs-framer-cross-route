@@ -23,15 +23,13 @@ export default function Home() {
         <div className="flex flex-col p-4 my-10 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         {/* <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
           {/* TODO:: Add my own here? */}
-          <h1
-            className="block text-5xl tracking-tighter pb-10"
-          >
+          <h1 className="page--title">
             Places - Original
           </h1>
           
           <motion.div
             layoutId={`places-original`}
-            className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}
+            className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}
             transition={{ ease: "easeOut" }}
             // initial={{ height: 200 }}
             // animate={{ height: 200 }}
@@ -101,12 +99,12 @@ export default function Home() {
                     transition={{ ease: "easeOut" }}
                     animate={{ color: "#f8fafc" }}
                   >
-                    <motion.h1
+                    <motion.h2
                       className="block text-5xl font-semibold tracking-tighter"
                       layout
                     >
                       {place.name}
-                    </motion.h1>
+                    </motion.h2>
                   </motion.div>
                 </div>
               </motion.a>
