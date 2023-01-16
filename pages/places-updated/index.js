@@ -55,7 +55,7 @@ export default function Places() {
             Places - Updated
           </h1>
           <div className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}>
-            Redesign of Ryan's example, by {` `}
+            Redesign of Ryan&#39;s example, by {` `}
             <ExtLink  href='https://github.com/erikplachta'
                       className='underline text-blue-500 hover:text-blue-700'
             >
