@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Route animations</title>
+        <title>CrossOrigin Animation With Framer Motion</title>
       </Head>
       <div className={`${inter.className} flex flex-col max-h-0 bg-slate-300`}>
         <AnimatePresence initial={false} mode="wait">
