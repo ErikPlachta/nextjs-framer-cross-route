@@ -16,8 +16,8 @@ const navItems: { label: string; page?: string; description?: string; link?: str
     page: '/places',
     description: 'Original Places Concept'
   },
-  { label: 'Places - Updated',
-    page: '/places-updated',
+  { label: 'Places - Rebuild',
+    page: '/places-rebuild',
     description: '' 
   }
 ];
