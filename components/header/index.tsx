@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { 
   usePathname,
   useRouter } from 'next/navigation'
-import styles   from './assets/css/header.module.css'
+// import styles   from './assets/css/header.module.css'
 
 
 //TODO: 20230108 #EP || Add Descriptions for each page.
@@ -27,16 +27,20 @@ const Header = ( titlePre: any ) => {
   const pathname  = usePathname()
 
   return (
-    <header className={styles.wrapper}>
+    <header className="flex p-6">
+    {/* <header className={styles.wrapper}> */}
       
       {/* <Link href="/" className={styles.logo}>
           <img src="./assets/image/logo.png" alt="Logo" width="40" height='40' />
       </Link> */}
+      
 
-      <nav>
-        <ul>
+      <nav className="flex-auto">
+        <ul className='flex flex-row justify-end space-evenly gap-10 color text-slate-800 text-lg font-bold tracking-wide'>
           {navItems.map(({ label, page, link }) => (
-            <li key={label}>
+            <li className=' hover:underline hover:text-slate-600'
+                key={label}
+            >
               {page ? (
                 <Link href={page}>
                   <span className={ pathname === page 
