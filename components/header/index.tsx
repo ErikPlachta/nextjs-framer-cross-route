@@ -26,7 +26,7 @@ const Header = ( titlePre: any ) => {
   const pathname  = usePathname()
 
   return (
-    <header className="flex p-6">
+    <header className="flex p-6 max-w-2xl m-auto">
     {/* <header className={styles.wrapper}> */}
       
       {/* <Link href="/" className={styles.logo}>
@@ -44,7 +44,7 @@ const Header = ( titlePre: any ) => {
                 <Link href={page}>
                   <span className={ pathname === page 
                                     ? 'active'
-                                    : undefined
+                                    : null
                                   }
                   >
                     {label}

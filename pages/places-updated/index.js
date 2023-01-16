@@ -52,10 +52,13 @@ export default function Places() {
           Places - Updated | CrossOrigin Animation with Framer-Motion
         </title>
       </Head>
+      
+      <Header titlePre='Places - New' />
+
       <div>
-        <Header titlePre='Places - New' />
+        <div className="flex flex-col p-4 my-10 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         {/* <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
-        <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
+        {/* <div className="flex flex-col p-4 my-10 m-auto rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
 
           <div className="relative z-10" >
             <h1 className="block text-5xl tracking-tighter pb-10" >
