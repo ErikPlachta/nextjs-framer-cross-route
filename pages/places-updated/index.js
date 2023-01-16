@@ -22,7 +22,7 @@ export default function Places() {
   //-- Starts full screen, then shrinks.
   let imageHeightFrom   = '0px';
   //-- Image to never be more than max. 
-  let imageHeightToMax  = 200;
+  let imageHeightToMax  = 300;
   //-- Defined to 25vh OR imageHeightToMax if meets max
   let imageHeightTo = useRef(imageHeightToMax);
 
@@ -101,7 +101,9 @@ export default function Places() {
                     opacity: 1,
                   },
                   whileHover: {
-                    transform: 'translateY(-1px)',
+                    // transform: 'translateY(-1px)',
+                    top: "-5px",
+                    // left: "-5px",
                   },
                 }}
                 whileHover={'whileHover'}
