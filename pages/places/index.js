@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import Header from "../../components/header";
 import ExtLink from "../../components/ext-link";
 
@@ -9,101 +10,109 @@ export default function Home() {
   let goingToPlace = router.query.id;
 
   return (
-    <div className="h-full">
-      <Header titlePre='Index' />
-      <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
-        {/* TODO:: Add my own here? */}
-        <h1
-          className="block text-5xl tracking-tighter pb-10"
-        >
-          Places - Original
-        </h1>
-        
-        <motion.div
-          layoutId={`places-original`}
-          className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}
-          transition={{ ease: "easeOut" }}
-          // initial={{ height: 200 }}
-          // animate={{ height: 200 }}
-          style={{ originX: 0.5 }}
-        >
-          MVP original concept built by {` `}
-          <ExtLink  href="https://github.com/ryanto/fmr-next-cross-route"
-                    className='underline text-blue-500 hover:text-blue-700'
+    <>
+      <Head>
+        <title>
+          Places - Original | CrossOrigin Animation with Framer-Motion
+        </title>
+      </Head>
+
+      <div className="h-full">
+        <Header titlePre='Index' />
+        <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500">
+          {/* TODO:: Add my own here? */}
+          <h1
+            className="block text-5xl tracking-tighter pb-10"
           >
-            Ryan Toronto
-          </ExtLink>
-          , with some very minor animation and style tweaks to accommodate my layout.
-        </motion.div>
-      {/* </div>
-      <div className="flex flex-col"> */}
-        {places.map((place) => (
-          <Link
-            key={place.id}
-            href={`/places/${place.id}`}
-            passHref
-            scroll={false}
-            legacyBehavior
+            Places - Original
+          </h1>
+          
+          <motion.div
+            layoutId={`places-original`}
+            className={`relative bg-slate-100 overflow-hidden p-4 m-4 rounded-md text-2xl`}
+            transition={{ ease: "easeOut" }}
+            // initial={{ height: 200 }}
+            // animate={{ height: 200 }}
+            style={{ originX: 0.5 }}
           >
-            <motion.a
-              className="relative block"
-              initial="hidden"
-              animate="showing"
-              exit={place.id === goingToPlace ? "showing" : "hidden"}
-              variants={{
-                hidden: {
-                  opacity: 0,
-                },
-                showing: {
-                  opacity: 1,
-                },
-              }}
+            MVP original concept built by {` `}
+            <ExtLink  href="https://github.com/ryanto/fmr-next-cross-route"
+                      className='underline text-blue-500 hover:text-blue-700'
             >
-              <motion.div
-                layoutId={`photo-${place.id}`}
-                className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden`}
-                transition={{ ease: "easeOut" }}
-                initial={{ height: 600 }}
-                animate={{ height: 400 }}
-                style={{ originX: 0.5 }}
+              Ryan Toronto
+            </ExtLink>
+            , with some very minor animation and style tweaks to accommodate my layout.
+          </motion.div>
+        {/* </div>
+        <div className="flex flex-col"> */}
+          {places.map((place) => (
+            <Link
+              key={place.id}
+              href={`/places/${place.id}`}
+              passHref
+              scroll={false}
+              legacyBehavior
+            >
+              <motion.a
+                className="relative block"
+                initial="hidden"
+                animate="showing"
+                exit={place.id === goingToPlace ? "showing" : "hidden"}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                  },
+                  showing: {
+                    opacity: 1,
+                  },
+                }}
               >
-                <motion.img
-                  layoutId={`image-${place.id}`}
-                  transition={{ ease: "easeOut" }}
-                  src={place.image}
-                  alt={place.name}
-                  className="absolute w-full object-cover mix-blend-soft-light"
-                  initial={{
-                    height: 600,
-                  }}
-                  animate={{
-                    height: 400,
-                  }}
-                  style={{
-                    originX: 0.5,
-                    objectPosition: place.position,
-                  }}
-                />
-              </motion.div>
-              <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
                 <motion.div
-                  layoutId={`title-${place.id}`}
+                  layoutId={`photo-${place.id}`}
+                  className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden`}
                   transition={{ ease: "easeOut" }}
-                  animate={{ color: "#f8fafc" }}
+                  initial={{ height: 600 }}
+                  animate={{ height: 400 }}
+                  style={{ originX: 0.5 }}
                 >
-                  <motion.h1
-                    className="block text-5xl font-semibold tracking-tighter"
-                    layout
-                  >
-                    {place.name}
-                  </motion.h1>
+                  <motion.img
+                    layoutId={`image-${place.id}`}
+                    transition={{ ease: "easeOut" }}
+                    src={place.image}
+                    alt={place.name}
+                    className="absolute w-full object-cover mix-blend-soft-light"
+                    initial={{
+                      height: 600,
+                    }}
+                    animate={{
+                      height: 400,
+                    }}
+                    style={{
+                      originX: 0.5,
+                      objectPosition: place.position,
+                    }}
+                  />
                 </motion.div>
-              </div>
-            </motion.a>
-          </Link>
-        ))}
+                <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
+                  <motion.div
+                    layoutId={`title-${place.id}`}
+                    transition={{ ease: "easeOut" }}
+                    animate={{ color: "#f8fafc" }}
+                  >
+                    <motion.h1
+                      className="block text-5xl font-semibold tracking-tighter"
+                      layout
+                    >
+                      {place.name}
+                    </motion.h1>
+                  </motion.div>
+                </div>
+              </motion.a>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
