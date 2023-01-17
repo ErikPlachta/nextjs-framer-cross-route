@@ -106,7 +106,7 @@ export default function Place() {
     <>
       <Header title={place.name} />
       <article 
-              className={  `flex flex-col mt-20 mb-10 py-4 px-4 mx-auto gap-4 rounded-lg max-w-2xl `
+              className={  `flex flex-col mt-[6rem] mb-10 py-4 px-4 mx-auto gap-4 rounded-lg max-w-2xl `
                         +   `bg-slate-100 shadow-sm shadow-slate-500`
                       }
       >

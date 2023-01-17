@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Header titlePre='Index' />
       
-      <article className="h-full mx-2">
+      <article className="h-full mt-20 mx-2">
         <div className="flex flex-col p-4 my-10 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         {/* <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
           <h1 className="page--title">
