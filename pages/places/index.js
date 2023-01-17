@@ -19,7 +19,7 @@ export default function Home() {
 
       <Header titlePre='Index' />
       
-      <div className="h-full">
+      <div className='mt-[5vh]'>
         <div className="flex flex-col p-4 my-10 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         {/* <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
           {/* TODO:: Add my own here? */}

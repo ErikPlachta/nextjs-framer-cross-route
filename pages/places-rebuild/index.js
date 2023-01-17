@@ -22,7 +22,7 @@ export default function Places() {
   //-- Starts full screen, then shrinks.
   let imageHeightFrom   = '0px';
   //-- Image to never be more than max. 
-  let imageHeightToMax  = 300;
+  let imageHeightToMax  = 150;
   //-- Defined to 25vh OR imageHeightToMax if meets max
   let imageHeightTo = useRef(imageHeightToMax);
 
@@ -55,18 +55,17 @@ export default function Places() {
         </title>
       </Head>
       
-      <Header titlePre='Places - New' />
+      <Header titlePre='Places - Rebuild' />
 
-      <div>
+      <div className='mt-20'>
         <div className="flex flex-col p-4 my-10 gap-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500">
-        {/* <div className="flex flex-col p-4 m-10 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
-        {/* <div className="flex flex-col p-4 my-10 m-auto rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
 
-          <div className="relative z-10" >
+          <div className="relative " >
             <h1 className="page--title" >
             {/* <h1 className="block text-5xl tracking-tighter pb-10" > */}
-              Places - Updated
+              Places - Rebuild
             </h1>
+            
             <div className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}>
               Redesign of Ryan&#39;s example, by {` `}
               <ExtLink  href='https://github.com/erikplachta'
@@ -126,7 +125,6 @@ export default function Places() {
                     height: imageHeightTo.current,
                   }}
                   style={{ originX: 0.5 }}
-                  
                 >
                   
                   {/** Image of place.
@@ -160,10 +158,7 @@ export default function Places() {
                     transition={{ ease: "easeInOut" }}
                     animate={{ color: "#f8fafc" }}
                   >
-                    <h2
-                      className="block text-2xl font-semibold tracking-tighter"
-                    
-                    >
+                    <h2 className="block text-2xl font-semibold tracking-tighter">
                       {place.name}
                     </h2>
                   </motion.div>

@@ -26,7 +26,10 @@ const Header = ( titlePre: any ) => {
   const pathname  = usePathname()
 
   return (
-    <header className="flex p-6 max-w-2xl m-auto">
+    <header className={`fixed flex justify-center left-0 top-0 py-4 m-auto w-full z-20 `
+                      + `bg-gradient-to-b from-slate-900 to-slate-900/80 `
+                      + `text-slate-100 font-semibold tracking-wide uppercase`
+  }>
     {/* <header className={styles.wrapper}> */}
       
       {/* <Link href="/" className={styles.logo}>
@@ -35,9 +38,11 @@ const Header = ( titlePre: any ) => {
       
 
       <nav className="flex-auto">
-        <ul className='flex flex-row justify-end space-evenly gap-10 color text-slate-800 text-lg font-bold tracking-wide'>
+        <ul className={`flex flex-row justify-center text-center space-around max-w-[800px] m-auto gap-5 md:gap-10 lg:gap-10 xl:gap-10 `
+                        + ` text-MD `
+                      }>
           {navItems.map(({ label, page, link }) => (
-            <li className=' hover:underline hover:text-slate-600'
+            <li className='flex m-auto text-center align-center hover:underline hover:text-slate-700 dark:hover:text-slate-300'
                 key={label}
             >
               {page ? (
