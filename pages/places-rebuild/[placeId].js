@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import getPlaces from "../../context/places";
 
 
@@ -106,11 +106,11 @@ export default function Place() {
     <>
       <Header title={place.name} />
       <article 
-              className={  `flex flex-col mt-[6rem] mb-10 py-4 px-4 mx-auto gap-4 rounded-lg max-w-2xl `
+              className={  `flex flex-col mt-[6rem] mb-10 py-0 px-2 mx-auto gap-4 rounded-lg max-w-2xl `
                         +   `bg-slate-100 shadow-sm shadow-slate-500`
                       }
       >
-        <div  className="relative p-4 mb-10 pt-2">
+        <div  className="relative p-4 mb-10 pt-0">
           <Link href="/places-rebuild" passHref scroll={false} legacyBehavior>
             <motion.a
               className={`absolute top-0 left-4 z-10 mt-6 flex items-center gap-1 rounded-md px-2 py-2 `
