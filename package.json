@@ -1,27 +1,44 @@
 {
-  "name": "route-animation-demo",
+  "name": "cross-route-animations",
   "version": "0.1.1",
-  "author": "Erik Plachta",
   "private": true,
+  "author" : "Erik Plachta",
+  "description": "A Next.js starter with cross-route animations.",
+  "license": "MIT",
+  "keywords": [
+    "next.js",
+    "tailwindcss",
+    "typescript",
+    "framer-motion",
+    "cross-route-animation"
+
+  ],
+  "contributors": [
+    {
+      "name": "Ryan Toronto",
+      "GitHub": "https://github.com/ryanto"
+    },
+    {
+      "name": "Erik Plachta",
+      "GitHub": "https://github.com/erikplachta"
+    }
+  ],
   "scripts": {
     "dev": "next dev",
-    "watch": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
-    "@next/font": "13.1.1",
-    "eslint": "8.31.0",
-    "framer-motion": "^10.12.16",
-    "next": "^13.4.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "eslint": "8.41.0",
+    "next": "13.4.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.14",
     "eslint-config-next": "^13.4.4",
     "postcss": "^8.4.24",
