@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 
 import getPlaces from "../../context/places"; 
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import ExtLink from "../../components/ext-link";
 
 
