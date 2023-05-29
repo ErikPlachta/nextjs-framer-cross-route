@@ -6,9 +6,17 @@
                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
   <url>
-    <loc>https://localhost:3000</loc>
+    <loc>//localhost:3000</loc>
     <route></route>
     <lastmod></lastmod>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>//localhost:3000/sitemap</loc>
+    <route>Sitemap</route>
+    <lastmod></lastmod>
+    <priority>0.68</priority>
+  </url>
+
+  
 </urlset>
