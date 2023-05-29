@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/places-rebuild/[placeId].js", "context/places.ts"  ],
+, "src/pages/places-rebuild/[placeId].js", "context/places.ts"  ],
   "exclude": [
     "node_modules"
   ]

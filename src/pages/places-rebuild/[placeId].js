@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Header from "../../components/Header";
+import Header from "../../src/components/Header";
 import getPlaces from "../../context/places";
 
 
