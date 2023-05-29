@@ -2,7 +2,7 @@
   "name": "cross-route-animations",
   "version": "0.1.1",
   "private": true,
-  "author" : "Erik Plachta",
+  "author": "Erik Plachta",
   "description": "A Next.js starter with cross-route animations.",
   "license": "MIT",
   "keywords": [
@@ -10,8 +10,8 @@
     "tailwindcss",
     "typescript",
     "framer-motion",
-    "cross-route-animation"
-
+    "cross-route-animation",
+    "prisma"
   ],
   "contributors": [
     {
@@ -30,15 +30,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@prisma/client": "^4.14.1",
+    "@types/node": "^20.2.5",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "eslint": "8.41.0",
     "next": "13.4.4",
+    "prisma": "^4.14.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.2.5",
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.14",
     "eslint-config-next": "^13.4.4",
     "postcss": "^8.4.24",

@@ -12,11 +12,26 @@ module.exports = {
         'secondary' : "hsl(0, 0%, 90%)",
         'tertiary'  : "hsl(0, 0%, 80%)",
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      
+      //-- Update with custom fonts.
+      // fontFamily: {
+      //   'sans': ['Inter', 'sans-serif'],
+      // },
+      
+      //-- Update with custom theming.
+      // typography: (theme) => ({
+      //   DEFAULT: {
+      //     css: {
+      //       // color: theme('colors.gray.700'),
+      //       a: {
+      //         color: theme('colors.blue.500'),
+      //         '&:hover': {
+      //           color: theme('colors.blue.700'),
+      //         }
+      //       },
+      //     },
+      //   },
+      // }),
     },
   },
   plugins: [],

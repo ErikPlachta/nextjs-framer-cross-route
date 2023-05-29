@@ -12,26 +12,20 @@ const CACHE_NAME = `${CACHE_ROOT}-${CACHE_VERSION}`;
 // // Define assets to be cached
 const ASSETS_TO_CACHE = [
     '/',
-    '/blog', 
-    '/sandbox',
-    '/login',
-    '/about',
-    '/offline',
-    // '/404',
-    // '/*'
-
-    '/apple-touch-icon.png',
-    '/favicon-16x16.png',
-    '/favicon-32x32.png',
-    '/favicon.ico',
-    '/logo72.png',
-    '/logo128.png',
-    '/logo144.png',
-    '/logo152.png',
-    '/logo192.png',
-    '/logo384.png',
-    '/logo512.png',
-    '/sitemap.xml',
+    
+    // '/apple-touch-icon.png',
+    // '/favicon-16x16.png',
+    // '/favicon-32x32.png',
+    // '/favicon.ico',
+    // '/logo72.png',
+    // '/logo128.png',
+    // '/logo144.png',
+    // '/logo152.png',
+    // '/logo192.png',
+    // '/logo384.png',
+    // '/logo512.png',
+    '/sitemap',
+    '/sitemap.xml'
 ];
 
 
