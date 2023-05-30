@@ -1,22 +1,36 @@
 import Image from "next/image";
 
-export default function Page({ params }:any) {
-  let slug = params.slug;
+export default function Page() {
   
-  let post = exampleData.find((post) => post.slug === slug);
+  let data = exampleData;
   
-  return (
-    <div>
-      {post && (
-        <>
+  function buildCard():any{
+    
+    return exampleData.map((post) => {
+      return (
+        <div>
           <h1>{post.title}</h1>
           <p>{post.content}</p>
           <Image src={post.image} alt={post.title} width={500} height={500} />
-        </>
-      )}
-    </div>
+        </div>
+      )
+    })
+  }
+  
+  return (
+    <>
+      <section>
+        <h1>Blog</h1>
+      </section>
+      
+      <section>
+        {buildCard()}
+      </section>
+    </>
   );
 }
+
+
 
 const exampleData = [
   {
