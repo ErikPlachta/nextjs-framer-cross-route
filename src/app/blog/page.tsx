@@ -76,7 +76,7 @@ export default function Page() {
                 layoutId={`image-${post.id}`}
                 transition={{ ease: "easeInOut" }}
                 src={post.image}
-                alt={post.name}
+                alt={post.title}
                 className="absolute w-full object-cover mix-blend-soft-light"
                 initial={{
                   height: 0,
@@ -101,7 +101,7 @@ export default function Page() {
                 animate={{ color: "#f8fafc" }}
               >
                 <h2 className="block text-2xl font-semibold tracking-tighter">
-                  {post.name}
+                  {post.title}
                 </h2>
               </motion.div>
             </div>
