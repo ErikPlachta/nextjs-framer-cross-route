@@ -1,7 +1,9 @@
 export default function Home() {
+  
   return (
-    <main>
-      <h1>Home - Placeholder</h1>
-    </main>
+    <>
+      <h1>Home</h1>
+      <p>Homepage placeholder string.</p>
+    </>
   )
 }

@@ -15,7 +15,7 @@
  * <ExtLink href="https://example.com" target="_blank" rel="noopener">
  * 
  */
-export default function ExtLink(props = { target: String() || '_blank' }):JSX.Element{
+export default function ExternalLink(props = {target: String() || '_blank' }):JSX.Element{
   return (
     <a {...props} rel="noopener" target={props.target || '_blank'} />
   )
