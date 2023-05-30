@@ -19,8 +19,7 @@ export default function Page({ params }:any) {
 }
 
 
-
-export const exampleData = [
+const exampleData = [
   {
     "id": 1,
     "title": "Blog Post 1",
