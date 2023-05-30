@@ -47,8 +47,8 @@ export default function RootLayout({
           {children}
         </main>
         
-        <footer className='bottom-0'>
-          Concept App
+        <footer className='bottom-0 flex text-primary justify-center border-solid border-2 border-b-0 border-l-0 border-r-0 border-blue-700 bg-blue-900 py-2'>
+          Footer Placeholder
         </footer>
       </body>
     </html>
