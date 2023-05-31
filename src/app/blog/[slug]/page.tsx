@@ -7,7 +7,7 @@ export default function Page({ params }:any) {
   //-- simulate query to database
   let data = getPostData();
   
-  let post = data.find((post) => post.id === slug);
+  let post = data.find((post) => post.slug === slug);
   
   return (
     <div>

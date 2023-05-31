@@ -12,7 +12,7 @@ export default function Page() {
   //-- Extracting where to navigating to 
   const router = useSearchParams();
   const searchParams = useSearchParams();
-  let postIdRoutingTo = searchParams.get("id");
+  let postIdRoutingTo = searchParams.get("slug");
 
   
   function buildBlogData():any{
@@ -21,18 +21,17 @@ export default function Page() {
       data.map((post) => {
         return (
           <Link
-            key={post.id}
-            href={`/blog/${post.id}`}
+            key={post.slug}
+            href={`/blog/${post.slug}`}
             passHref
             scroll={false}
             legacyBehavior
           >
                 
-          {/** Parent Element around each post.
-           * 
+          {/** 
+           * Parent Element around each post.
           */}
           <motion.a
-            // className="relative block mx-2 overflow-hidden rounded shadow-[1px_1px_2px_1px_rgba(0,0,0,0.4)]"
             className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
             initial="hidden"
             animate="showing"
@@ -46,53 +45,61 @@ export default function Page() {
               },
               whileHover: {
                 // transform: 'translateY(-1px)',
-                top: "-5px",
+                top: "-1px",
                 // left: "-5px",
               },
             }}
             whileHover={'whileHover'}
           >
             
-            {/** Container around image with gradient/blended background.
-             * 
+            {/**
+             * Container around image with gradient/blended background.
             */}
             <motion.div
-              layoutId={`photo-${post.id}`}
-              className={`relative bg-gradient-to-tr ${post.blend} overflow-hidden rounded-md`}
+              layoutId={`image-wrapper-${post.slug}`}
+              // className={`relative bg-gradient-to-tr ${post.blend} overflow-hidden rounded-md`}
+              className={`relative h-[150px] bg-gradient-to-tr ${post.blend} overflow-hidden`}
               transition={{ ease: "easeOut" }}
               initial={{ 
-                height: 0,
+                // height: 150,
               }}
               animate={{ 
-                height: '150px',
+                // height: '150px',
               }}
               style={{ originX: 0.5 }}
             >
               
-              {/** Image of post.
-               * 
+              {/**
+               * Image of post.
                */}
               <motion.img
-                layoutId={`image-${post.id}`}
+                layoutId={`image-${post.slug}`}
                 transition={{ ease: "easeInOut" }}
                 src={post.image}
                 alt={post.title}
-                className="absolute w-full object-cover mix-blend-soft-light"
+                className="h-[150px] absolute w-full object-cover"
+                // className="absolute w-full object-cover mix-blend-soft-light"
                 initial={{
-                  height: 0,
+                  // height: 0,
+                  opacity: 0.2,
                 }}
                 animate={{
-                  height: 150,
+                  // height: 150,
+                  opacity: 0.85,
+                }}
+                whileHover={{
+                  opacity: .9,
                 }}
                 style={{
                   originX: 1,
                   objectPosition: post.position,
+                  
                 }}
               />
             </motion.div>
             
-            {/** Container around Place Name.
-             * 
+            {/**
+             * Container around Place Name.
             */}
             <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
               <motion.div
@@ -100,9 +107,9 @@ export default function Page() {
                 transition={{ ease: "easeInOut" }}
                 animate={{ color: "#f8fafc" }}
               >
-                <h2 className="block text-2xl font-semibold tracking-tighter">
+                <h3 className="block text-2xl font-semibold tracking-tighter">
                   {post.title}
-                </h2>
+                </h3>
               </motion.div>
             </div>
           </motion.a>
@@ -124,38 +131,3 @@ export default function Page() {
     </>
   );
 }
-
-
-
-// const testBlogData = [
-//   {
-//     "id": 1,
-//     "title": "Blog Post 1",
-//     "slug": "1",
-//     "content": "Blog post 1 content.",
-//     "author": "Author 1",
-//     "date": "2021-01-01",
-//     "image" : '/assets/images/place/aspen.jpeg',
-//     "blend" : ''
-//   },
-//   {
-//     "id": 2,
-//     "title": "Blog Post 2",
-//     "slug": "2",
-//     "content": "Blog post 2 content.",
-//     "author": "Author 2",
-//     "date": "2021-01-02",
-//     "image" : "/assets/images/place/lake-como.jpeg",
-//     "blend" : ''
-//   },
-//   {
-//     "id": 3,
-//     "title": "Blog Post 3",
-//     "slug": "3",
-//     "content": "Blog post 3 content.",
-//     "author": "Author 2",
-//     "date": "2021-01-02",
-//     "image" : "/assets/images/place/nyc.jpeg",
-//     "blend" : ''
-//   },
-// ]
