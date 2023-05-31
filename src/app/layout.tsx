@@ -37,10 +37,11 @@ export default function RootLayout({
           {/* <link rel="manifest" href="/manifest.json" /> */}
 
           <title>{metadata.title}</title>
-        <body className={`h-100 min-h-[100%] bg-secondary`}>
-          <header className='bg-secondary p-2'>
+        <body className={`h-100 min-h-[100%] bg-secondary`}>          
+          {/* <header className='bg-secondary p-2'>
             <Link href="/"><h1>{metadata.title}</h1></Link>
-          </header>
+          </header> */}
+          
           
           {/*//TODO: 20230529 #EP || Add Navigation */}
 
