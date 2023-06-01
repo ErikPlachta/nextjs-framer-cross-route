@@ -18,13 +18,7 @@ export default function Page({ params }:any) {
   );
 }
 
-<<<<<<< HEAD
-const exampleData = [
-=======
-
-
 const testBlogData = [
->>>>>>> 458d412 (Updated base building logic.)
   {
     "id": 1,
     "title": "Blog Post 1",
