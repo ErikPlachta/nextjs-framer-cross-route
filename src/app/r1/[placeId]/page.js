@@ -1,24 +1,22 @@
-import { useRouter } from "next/router";
+'use client';
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Header from "@/components/Header";
-import getPlaces from "@/context/places";
+// import Header from "@/components/Header";
+import getPlaces from "@/context/blog/posts";
 
 
 /** Each individual place. */
-export default function Place() {
+export default function Place({params}) {
+  
   let router = useRouter();
   let pageAnimations = useAnimation();
-  
   const places = getPlaces();
-
-  /**  Get place from slug 
-   * 
-  */
-  let [id] = useState(router.query.placeId);
   
+  //-- Extract placeId from params
+  let [id] = useState(params.placeId);
   let place = places.find((p) => p.id === id);
 
   //----------
@@ -59,7 +57,7 @@ export default function Place() {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (router.pathname === "/places-rebuild/[placeId]") {
+        if (router.pathname === "/r2/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(to, latest);
           });
@@ -84,7 +82,7 @@ export default function Place() {
         let isScrolled = startScrolling()
         .then( results => {
           if(isScrolled){
-            console.log("isScrolled: ", isScrolled)
+            // console.log("isScrolled: ", isScrolled)
             pageAnimations.start("showing");
           }
         })
@@ -92,7 +90,7 @@ export default function Place() {
       
       //-- IF `startScrolling` is called, THEN start Framer animation showing once the scroll animation if finished.
       if (!didStart.current && scrollFinished.current) {
-        console.log("//-- Scroll event finished, start animation.")
+        // console.log("//-- Scroll event finished, start animation.")
         pageAnimations.start("showing");
       }
     }, process.env.PLACE_ANIMATION_DELAY);
@@ -103,132 +101,102 @@ export default function Place() {
 
   //-- Render Place
   return (
-    <>
-      <Header title={place.name} />
-      <article 
-              className={  `flex flex-col mt-[6rem] mb-10 py-0 px-2 mx-auto gap-4 rounded-lg max-w-2xl `
-                        +   `bg-slate-100 shadow-sm shadow-slate-500`
-                      }
-      >
-        <div  className="relative p-4 mb-10 pt-0">
-          <Link href="/places-rebuild" passHref scroll={false} legacyBehavior>
-            <motion.a
-              className={`absolute top-0 left-4 z-10 mt-6 flex items-center gap-1 rounded-md px-2 py-2 `
-                        + ` bg-slate-600 bg-opacity-10 hover:bg-opacity-70 `
-                        + `text-gray-50 text-md font-medium `
-              }
-              initial="hidden"
-              animate={pageAnimations}
-              exit="hidden"
-              variants={{
-                hidden: { opacity: 0 },
-                showing: { opacity: 1 },
-              }}
-            >
-              <ChevronLeftIcon className="h-4 w-4" />
-              Back
-            </motion.a>
-          </Link>
-          <motion.div
-            layoutId={`photo-${place.id}`}
-            onLayoutAnimationStart={startScrolling}
-            className={`relative -mx-6 bg-gradient-to-tr ${place.blend} overflow-hidden  rounded-md shadow-md`}
-            transition={{ ease: "easeOut" }}
-            initial={{ height: imageHeightFrom }}
-            animate={{ height: imageHeightTo }}
-            style={{ originX: 0.5 }}
+    <article 
+            className={  `flex flex-col py-0 px-2 mx-auto gap-4 rounded-lg max-w-2xl `
+                      +   `bg-slate-100 shadow-sm shadow-slate-500`
+                    }
+    >
+      <div  className="relative p-4 mb-10 pt-0">
+        <Link href="/places-rebuild" passHref scroll={false} legacyBehavior>
+          <motion.a
+            className={`absolute top-0 left-4 z-10 mt-6 flex items-center gap-1 rounded-md px-2 py-2 `
+                      + ` bg-slate-600 bg-opacity-10 hover:bg-opacity-70 `
+                      + `text-gray-50 text-md font-medium `
+            }
+            initial="hidden"
+            animate={pageAnimations}
+            exit="hidden"
+            variants={{
+              hidden: { opacity: 0 },
+              showing: { opacity: 1 },
+            }}
           >
-            {console.log("viewportHeight: ",viewportHeight)}
-            <motion.img
-              layoutId={`image-${place.id}`}
-              transition={{ ease: "easeOut" }}
-              src={place.image}
-              alt={place.name}
-              // className="absolute w-full object-cover mix-blend-soft-light h-0"
-              className="absolute w-full object-cover h-0 rounded-md"
-              initial={{
-                height: imageHeightFrom,
-                shadow: "0px 0px 0px 0px rgba(0, 0, 0, 1)",
-              }}
-              animate={{
-                height: imageHeightTo,
-              }}
-              style={{
-                originX: 0.5,
-                objectPosition: place.position,
-              }}
-            />
+            <ChevronLeftIcon className="h-4 w-4" />
+            Back
+          </motion.a>
+        </Link>
+        <motion.div
+          layoutId={`photo-${place.id}`}
+          onLayoutAnimationStart={startScrolling}
+          className={`relative -mx-6 bg-gradient-to-tr ${place.blend} overflow-hidden  rounded-md shadow-md`}
+          transition={{ ease: "easeOut" }}
+          initial={{ height: imageHeightFrom }}
+          animate={{ height: imageHeightTo }}
+          style={{ originX: 0.5 }}
+        >
+          {/* {console.log("viewportHeight: ",viewportHeight)} */}
+          <motion.img
+            layoutId={`image-${place.id}`}
+            transition={{ ease: "easeOut" }}
+            src={place.image}
+            alt={place.title}
+            // className="absolute w-full object-cover mix-blend-soft-light h-0"
+            className="absolute w-full object-cover h-0 rounded-md"
+            initial={{
+              height: imageHeightFrom,
+              shadow: "0px 0px 0px 0px rgba(0, 0, 0, 1)",
+            }}
+            animate={{
+              height: imageHeightTo,
+            }}
+            style={{
+              originX: 0.5,
+              objectPosition: place.position,
+            }}
+          />
+        </motion.div>
+        <div className="pt-12">
+          <motion.div
+            layoutId={`title-${place.id}`}
+            transition={{ ease: "easeOut" }}
+            initial={{ color: "#f8fafc" }}
+            animate={{ color: "#111827" }}
+            className="relative z-10"
+          >
+            <motion.h1
+              className="block text-5xl font-semibold tracking-tighter"
+              layout
+            >
+              {place.title}
+            </motion.h1>
           </motion.div>
-          <div className="pt-12">
-            <motion.div
-              layoutId={`title-${place.id}`}
-              transition={{ ease: "easeOut" }}
-              initial={{ color: "#f8fafc" }}
-              animate={{ color: "#111827" }}
-              className="relative z-10"
-            >
-              <motion.h1
-                className="block text-5xl font-semibold tracking-tighter"
-                layout
-              >
-                {place.name}
-              </motion.h1>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate={pageAnimations}
-              exit="exiting"
-              className="mt-6 text-base text-gray-700"
-              transition={{ ease: "easeOut" }}
-              variants={{
-                hidden: { opacity: 0, scale: 0.95, y: 15 },
-                showing: {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  transition: {
-                    staggerChildren: 0.05,
-                  },
+          <motion.div
+            initial="hidden"
+            animate={pageAnimations}
+            exit="exiting"
+            className="mt-6 text-base text-gray-700"
+            transition={{ ease: "easeOut" }}
+            variants={{
+              hidden: { opacity: 0, scale: 0.95, y: 15 },
+              showing: {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                transition: {
+                  staggerChildren: 0.05,
                 },
-                exiting: { opacity: 0 },
-              }}
-            >
-              {place.about.split("\n").map((paragraph, index) => (
-                <motion.p className={index !== 0 ? "mt-3" : ""} key={index}>
-                  {paragraph}
-                </motion.p>
-              ))}
-            </motion.div>
-          </div>
+              },
+              exiting: { opacity: 0 },
+            }}
+          >
+            {place.content.split("\n").map((paragraph, index) => (
+              <motion.p className={index !== 0 ? "mt-3" : ""} key={index}>
+                {paragraph}
+              </motion.p>
+            ))}
+          </motion.div>
         </div>
-      </article>
-    </>
+      </div>
+    </article>
   );
-}
-
-
-/** Pre-Render Place's Path by ID to update slug in URL.
- * 
- *  When you export a function called getStaticPaths (Static Site Generation)
- *  from a page that uses dynamic routes, Next.js will statically pre-render 
- *  all the paths specified by getStaticPaths.
- * 
- * @returns 
- * 
- * @Resources API - https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
- */
-export function getStaticPaths() {
-  
-  const places = getPlaces();
-
-  return {
-    paths: places.map((place) => ({ params: { placeId: place.id } })),
-    fallback: false,
-  };
-}
-
-export function getStaticProps() {
-  return {
-    props: {},
-  };
 }

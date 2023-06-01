@@ -68,7 +68,7 @@ export default function Places() {
       {places.map((place) => (
         <Link
           key={place.id}
-          href={`/places-rebuild/${place.id}`}
+          href={`/r1/${place.id}`}
           passHref
           scroll={false}
           legacyBehavior
