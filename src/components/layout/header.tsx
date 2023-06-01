@@ -38,7 +38,7 @@ const navItems: {
 export default function Header({params}:any){
   const pathname  = usePathname()
   return (
-    <header className={`fixed flex justify-center left-0 top-0 py-4 m-auto w-full z-20 backdrop-blur-md bg-white/40 border-solid border-black/10 border-b-2 border-t-0 border-l-0 border-r-0`}>
+    <header className={`fixed flex justify-center left-0 top-0 py-1 m-auto w-full z-20 backdrop-blur-md bg-white/40 border-solid border-black/10 border-b-2 border-t-0 border-l-0 border-r-0`}>
       
       <nav className="flex-auto"> 
         <ul className={`flex flex-row justify-center text-center space-around max-w-[800px] m-auto gap-5 md:gap-10 lg:gap-10 xl:gap-10`}>

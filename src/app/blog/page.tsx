@@ -120,14 +120,8 @@ export default function Page() {
   
   
   return (
-    <>
-      <section>
-        <h1>Blog</h1>
-      </section>
-      
-      <section className='flex flex-col gap-4'>
-        {buildBlogData()}
-      </section>
-    </>
+    <section className='flex flex-col gap-4 h-full'>
+      {buildBlogData()}
+    </section>
   );
 }

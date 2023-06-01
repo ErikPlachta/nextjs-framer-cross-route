@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section className="h-full mx-2">
       
-      <article className="flex flex-col p-4 my-10 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
+      <article className="flex flex-col p-4 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
         <h1 className="text-2xl ">
           Cross-Route Animation Concept
         </h1>

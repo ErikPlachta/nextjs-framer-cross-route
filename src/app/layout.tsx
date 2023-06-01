@@ -48,7 +48,7 @@ export default function RootLayout({
           <Header/>
           {/*//TODO: 20230529 #EP || Add Navigation */}
 
-          <main className='h-100vh min-h-[100vh] my-10 px-6 py-4'>
+          <main className='h-100vh min-h-[100vh] my-20 px-6 py-4 max-w-2xl mx-auto'>
             {children}
           </main>
           
