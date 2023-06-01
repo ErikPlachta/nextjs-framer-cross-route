@@ -17,7 +17,7 @@ export default function Home() {
           >
             Ryan Toronto
           </ExtLink>
-          . This is a rework of that concept I used to learn how it's working.
+          . This is a rework of that concept I used to learn how it `&#39;`s working.
         </div>
       </article>
 

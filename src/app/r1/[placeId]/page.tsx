@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
@@ -9,10 +9,11 @@ import getPlaces from "@/context/blog/posts";
 
 
 /** Each individual place. */
-export default function Place({params}) {
+export default function Place({params}:any) {
   
   let animationDelay = 1000;
   let router = useRouter();
+  let pathname = usePathname();
   let pageAnimations = useAnimation();
   const places = getPlaces();
   
@@ -58,7 +59,7 @@ export default function Place({params}) {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (router.pathname === "/r2/[placeId]") {
+        if (pathname === "/r2/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(to, latest);
           });
@@ -81,11 +82,8 @@ export default function Place({params}) {
       if (!didStart.current && !scrollFinished.current) {
         //--   
         let isScrolled = startScrolling()
-        .then( results => {
-          if(isScrolled){
-            // console.log("isScrolled: ", isScrolled)
-            pageAnimations.start("showing");
-          }
+        .then( async results => {
+          pageAnimations.start("showing");
         })
       } 
       
@@ -99,6 +97,19 @@ export default function Place({params}) {
     //-- Cleanup by clearing time to prevent error.
     return () => clearTimeout(id);
   }, [pageAnimations]);   //-- CHECK every time pageAnimations change to ensure content is shown.
+
+
+
+
+
+  if(!place) return (
+    <div className="flex flex-col py-0 px-0 mx-auto gap-4 rounded-lg max-w-2xl overflow-hidden bg-slate-100 shadow-sm shadow-slate-500">
+      <div className="relative px-6">
+        ERROR: Place not found with place id: ${id}
+      </div>
+    </div>
+  );
+
 
   //-- Render Place
   return (

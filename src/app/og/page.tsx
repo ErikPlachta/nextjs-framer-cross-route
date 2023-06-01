@@ -103,7 +103,7 @@ export default function Home() {
   );
 }
 
-export let places = [
+let places = [
   {
     id: "lake-como",
     name: "Lake Como",
