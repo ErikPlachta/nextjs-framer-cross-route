@@ -1,6 +1,7 @@
+
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { places } from "./page";
+import { places } from "../page";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
