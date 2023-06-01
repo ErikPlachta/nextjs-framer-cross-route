@@ -1,8 +1,12 @@
+'use client';
+import './globals.css';
+
 import Link from 'next/link'
-import './globals.css'
 import { AnimatePresence } from 'framer-motion'
 
-export const metadata = {
+import Header from '@/components/layout/header'
+
+const metadata = {
   title: 'Cross-Route Animation',
   description: 'Cross-Route Animations in Next.js 13 App Directory using Framer-Motion.',
 }
@@ -41,15 +45,14 @@ export default function RootLayout({
           {/* <header className='bg-secondary p-2'>
             <Link href="/"><h1>{metadata.title}</h1></Link>
           </header> */}
-          
-          
+          <Header/>
           {/*//TODO: 20230529 #EP || Add Navigation */}
 
-          <main className='h-100vh min-h-[100vh] p-2 py-4'>
+          <main className='h-100vh min-h-[100vh] my-10 px-6 py-4'>
             {children}
           </main>
           
-          <footer className='bottom-0 flex text-primary justify-center border-solid border-2 border-b-0 border-l-0 border-r-0 border-blue-700 bg-blue-900 py-2'>
+          <footer className='bottom-0 flex justify-center border-solid border-2 border-b-0 border-l-0 border-r-0 border-tertiary bg-primary py-2'>
             Footer Placeholder
           </footer>
         </body>
