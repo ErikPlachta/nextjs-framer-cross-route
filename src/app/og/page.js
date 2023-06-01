@@ -41,7 +41,7 @@ export default function Home() {
           {places.map((place) => (
             <Link
               key={place.id}
-              href={`/places/${place.id}`}
+              href={`/og/${place.id}`}
               passHref
               scroll={false}
               legacyBehavior
@@ -113,7 +113,7 @@ export let places = [
   {
     id: "lake-como",
     name: "Lake Como",
-    image: "/assets/images/places/lake-como.jpeg",
+    image: "/assets/images/places/lake-como.jpg",
     position: "center 56%",
     blend: "from-red-900/20 to-amber-300/20",
     about:
@@ -122,7 +122,7 @@ export let places = [
   {
     id: "aspen",
     name: "Aspen",
-    image: "/assets/images/places/aspen.jpeg",
+    image: "/assets/images/places/aspen.jpg",
     position: "58% 50%",
     blend: "from-purple-500/20 to-blue-500/20",
     about:
@@ -131,7 +131,7 @@ export let places = [
   {
     id: "nyc",
     name: "New York City",
-    image: "/assets/images/places/nyc.jpeg",
+    image: "/assets/images/places/nyc.jpg",
     position: "center 15%",
     blend: "from-slate-800/60 to-slate-100/60",
     about:

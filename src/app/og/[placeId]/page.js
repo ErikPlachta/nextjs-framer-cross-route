@@ -1,14 +1,15 @@
-
-import { useRouter } from "next/router";
+'use client';
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { places } from "../page";
 import { motion, useAnimation, animate } from "framer-motion";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-export default function Place() {
+export default function Place({params}) {
+
   let router = useRouter();
-  let [id] = useState(router.query.placeId);
+  let [id] = useState(params.placeId);
   let place = places.find((p) => p.id === id);
 
   let didStart = useRef(false);
@@ -22,14 +23,14 @@ export default function Place() {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (router.pathname === "/places/[placeId]") {
+        if (router.pathname === "/og/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(0, latest);
           });
         }
       },
       onComplete() {
-        if (router.pathname === "/places/[placeId]") {
+        if (router.pathname === "/og/[placeId]") {
           pageAnimations.start("showing");
         }
       },
@@ -38,22 +39,21 @@ export default function Place() {
 
   useEffect(() => {
     let id = setTimeout(() => {
-      if (!didStart.current) {
-        pageAnimations.start("showing");
-      }
+      pageAnimations.start("showing");
+      // if (!didStart.current) {
+      // }
     }, 300);
 
     return () => clearTimeout(id);
   }, [pageAnimations]);
 
   return (
-    <div  className={  `flex flex-col mt-10 mb-10 py-0 px-0 mx-auto gap-4 rounded-lg max-w-2xl overflow-hidden `
+    <div  className={  `flex flex-col py-0 px-0 mx-auto gap-4 rounded-lg max-w-2xl overflow-hidden `
                     +   `bg-slate-100 shadow-sm shadow-slate-500`
       }
     >
-      <div>
         <div className="relative px-6">
-          <Link href="/places" passHref scroll={false} legacyBehavior>
+          <Link href="/og" passHref scroll={false} legacyBehavior>
             <motion.a
               className="absolute top-0 left-0 z-10 mt-3 ml-4 flex items-center space-x-2 text-gray-50"
               initial="hidden"
@@ -137,20 +137,6 @@ export default function Place() {
             </motion.div>
           </div>
         </div>
-      </div>
     </div>
   );
-}
-
-export function getStaticPaths() {
-  return {
-    paths: places.map((place) => ({ params: { placeId: place.id } })),
-    fallback: false,
-  };
-}
-
-export function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+};
