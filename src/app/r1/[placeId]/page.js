@@ -11,6 +11,7 @@ import getPlaces from "@/context/blog/posts";
 /** Each individual place. */
 export default function Place({params}) {
   
+  let animationDelay = 1000;
   let router = useRouter();
   let pageAnimations = useAnimation();
   const places = getPlaces();
@@ -93,7 +94,7 @@ export default function Place({params}) {
         // console.log("//-- Scroll event finished, start animation.")
         pageAnimations.start("showing");
       }
-    }, process.env.PLACE_ANIMATION_DELAY);
+    }, animationDelay);
 
     //-- Cleanup by clearing time to prevent error.
     return () => clearTimeout(id);
@@ -107,7 +108,7 @@ export default function Place({params}) {
                     }
     >
       <div  className="relative p-4 mb-10 pt-0">
-        <Link href="/places-rebuild" passHref scroll={false} legacyBehavior>
+        <Link href="/r1" passHref scroll={false} legacyBehavior>
           <motion.a
             className={`absolute top-0 left-4 z-10 mt-6 flex items-center gap-1 rounded-md px-2 py-2 `
                       + ` bg-slate-600 bg-opacity-10 hover:bg-opacity-70 `

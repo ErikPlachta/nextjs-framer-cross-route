@@ -23,7 +23,7 @@ export default function Page() {
         return (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/r2/${post.slug}`}
             passHref
             scroll={false}
             legacyBehavior

@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -16,34 +16,6 @@ export default function Places() {
   let goingToPlace = searchParams.get("slug");
   
   const places = getPlaces();
-
-  
-  //-- Starts full screen, then shrinks.
-  let imageHeightFrom   = '0px';
-  //-- Image to never be more than max. 
-  let imageHeightToMax  = 150;
-  //-- Defined to 25vh OR imageHeightToMax if meets max
-  let imageHeightTo = useRef(imageHeightToMax);
-
-  let imageOffset = useRef(0);
-
-
-  //-- Set imageHeightTo to 25% of maxHeight or less based on viewport.
-  useEffect(() => {
-    
-    const vw = window.innerHeight * .25
-    
-    // console.log(vw)
-
-    if(vw > imageHeightToMax) {
-      imageHeightTo.current = imageHeightToMax + 'px';
-    }
-    else {
-      imageHeightTo.current = window.innerHeight * .25 + 'px';
-    }
-    // console.log(imageHeightTo.current)
-  }, [imageHeightTo]);
-
 
   //-- Render
   return (
@@ -107,10 +79,10 @@ export default function Places() {
               className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden rounded-md`}
               transition={{ ease: "easeOut" }}
               initial={{ 
-                height: imageHeightFrom,
+                height: 150,
               }}
               animate={{ 
-                height: imageHeightTo.current,
+                height: 150,
               }}
               style={{ originX: 0.5 }}
             >
@@ -123,13 +95,15 @@ export default function Places() {
                 transition={{ ease: "easeInOut" }}
                 src={place.image}
                 alt={place.name}
-                className="absolute w-full object-cover mix-blend-soft-light"
-                initial={{
-                  height: imageHeightFrom,
-                }}
-                animate={{
-                  height: imageHeightTo.current,
-                }}
+                className="absolute w-full object-cover h-[150px]"
+                // initial={{
+                //   height: 150,
+                //   // height: imageHeightFrom,
+                // }}
+                // animate={{
+                //   height: 150,
+                //   // height: imageHeightTo.current,
+                // }}
                 style={{
                   originX: 1,
                   objectPosition: place.position,
@@ -147,7 +121,7 @@ export default function Places() {
                 animate={{ color: "#f8fafc" }}
               >
                 <h2 className="block text-2xl font-semibold tracking-tighter">
-                  {place.name}
+                  {place.title}
                 </h2>
               </motion.div>
             </div>

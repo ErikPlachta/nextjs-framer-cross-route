@@ -22,8 +22,6 @@ export default function Home() {
         layoutId={`places-original`}
         className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}
         transition={{ ease: "easeOut" }}
-        // initial={{ height: 200 }}
-        // animate={{ height: 200 }}
         style={{ originX: 0.5 }}
       >
         MVP original concept built by {` `}
