@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Page({ params }:any) {
   let slug = params.slug;
   
-  let post = exampleData.find((post) => post.slug === slug);
+  let post = testBlogData.find((post) => post.slug === slug);
   
   return (
     <div>
@@ -18,7 +18,13 @@ export default function Page({ params }:any) {
   );
 }
 
+<<<<<<< HEAD
 const exampleData = [
+=======
+
+
+const testBlogData = [
+>>>>>>> 458d412 (Updated base building logic.)
   {
     "id": 1,
     "title": "Blog Post 1",
