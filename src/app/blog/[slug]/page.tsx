@@ -1,5 +1,6 @@
 
 import Image from "next/image";
+<<<<<<< HEAD
 import getPostData from '@/content/blog/posts';
 import { useRouter } from "next/navigation";
 
@@ -7,14 +8,24 @@ export default function Page({ params }:any) {
   
 <<<<<<< HEAD
   //-- slug sent when navigated to from blog base pge
+=======
+import getPostData from '@/context/blog/posts';
+
+export default function Page({ params }:any) {
+  
+>>>>>>> 5e6e4d4 (Built working route framework.)
   let slug = params.slug;
   //-- simulate query to database
   let data = getPostData();
   
+<<<<<<< HEAD
   let post = data.find((post) => post.slug === slug);
 =======
   let post = testBlogData.find((post) => post.slug === slug);
 >>>>>>> 458d412 (Updated base building logic.)
+=======
+  let post = data.find((post) => post.id === slug);
+>>>>>>> 5e6e4d4 (Built working route framework.)
   
   return (
     <div>
@@ -31,6 +42,7 @@ export default function Page({ params }:any) {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 
 
 const testBlogData = [
@@ -63,3 +75,5 @@ const testBlogData = [
   },
 ]
 >>>>>>> 458d412 (Updated base building logic.)
+=======
+>>>>>>> 5e6e4d4 (Built working route framework.)
