@@ -22,12 +22,11 @@ export default function Places() {
     <div className="flex flex-col p-4 gap-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500">
       <div className="relative " >
         <h1 className="page--title" >
-        {/* <h1 className="block text-5xl tracking-tighter pb-10" > */}
-          Places - Rebuild
+          Places - Rebuild 1
         </h1>
         
         <div className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}>
-          Redesign of Ryan&#39;s example, by {` `}
+          Jan. 17th, 2023. Redesign of Ryan&#39;s example, by {` `}
           <ExtLink  href='https://github.com/erikplachta'
                     className='underline text-blue-500 hover:text-blue-700'
           >
