@@ -1,9 +1,6 @@
 'use client';
 import './globals.css';
 
-// import Link from 'next/link'
-// import { AnimatePresence } from 'framer-motion'
-
 import Header from '@/components/layout/header';
 import React from 'react';
 
@@ -28,10 +25,7 @@ export default function RootLayout({
          
 
           <title>{metadata.title}</title>
-        <body className={`h-100 min-h-[100%] bg-secondary`}>          
-          {/* <header className='bg-secondary p-2'>
-            <Link href="/"><h1>{metadata.title}</h1></Link>
-          </header> */}
+        <body className={`h-100 min-h-[100%] bg-secondary`}>
           <Header/>
           
           <main className='h-100vh min-h-[100vh] my-20 px-6 py-4 max-w-2xl mx-auto'>
