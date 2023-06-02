@@ -6,14 +6,11 @@ import ExtLink from '@/components/anchor/external';
 
 export default function Home() {
   let router = useRouter();
-  // let goingToPlace = router.query.id;
   let searchParams = useSearchParams();
   let goingToPlace = searchParams.get("slug");
 
   return (
     <div className="flex flex-col p-4 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
-    {/* <div className="flex flex-col p-4 my-10 mx-2 rounded-lg bg-slate-100 gap-4 shadow-sm shadow-slate-500"> */}
-      {/* TODO:: Add my own here? */}
       <h1 className="page--title">
         Places - Original
       </h1>
