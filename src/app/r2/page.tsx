@@ -47,7 +47,7 @@ export default function Page() {
                 opacity: 1,
               },
               hover: {
-                transform: 'translateY(-5px)',
+                transform: 'translateY(-2px)',
               },
             }}
             transition={{
@@ -82,7 +82,6 @@ export default function Page() {
                 src={post.image}
                 alt={post.title}
                 className="h-[150px] absolute w-full object-cover"
-                // className="absolute w-full object-cover mix-blend-soft-light"
                 initial={'initial'}
                 animate={'showing'}
                 whileHover={'hover'}
@@ -126,6 +125,8 @@ export default function Page() {
   )}
   
   
+  //----------------------------------------------------------------------------
+  //-- Render Page
   return (
     <section className='flex flex-col gap-4 h-full p-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
 

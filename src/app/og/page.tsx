@@ -67,12 +67,8 @@ export default function Home() {
                 src={place.image}
                 alt={place.name}
                 className="absolute w-full object-cover"
-                initial={{
-                  height: 600,
-                }}
-                animate={{
-                  height: 400,
-                }}
+                initial={{ height: 600 }}
+                animate={{ height: 400 }}
                 style={{
                   originX: 0.5,
                   objectPosition: place.position,

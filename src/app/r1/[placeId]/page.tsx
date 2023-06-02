@@ -11,7 +11,7 @@ import getPlaces from "@/context/blog/posts";
 /** Each individual place. */
 export default function Place({params}:any) {
   
-  let animationDelay = 1000;
+  let animationDelay = 500;
   let router = useRouter();
   let pathname = usePathname();
   let pageAnimations = useAnimation();
@@ -59,7 +59,7 @@ export default function Place({params}:any) {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (pathname === "/r2/[placeId]") {
+        if (pathname === "/r1/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(to, latest);
           });
