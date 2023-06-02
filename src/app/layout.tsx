@@ -4,7 +4,7 @@ import './globals.css';
 // import Link from 'next/link'
 // import { AnimatePresence } from 'framer-motion'
 
-import Header from '@/components/layout/header'
+import Header from '@/components/header';
 
 const metadata = {
   title: 'Cross-Route Animation',
