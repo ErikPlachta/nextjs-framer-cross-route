@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import getPostData from '@/context/blog/posts';
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import React from "react";
 
 export default function Page() {
   //-- simulate query to database
@@ -22,7 +23,7 @@ export default function Page() {
         return (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/r2/${post.slug}`}
             passHref
             scroll={false}
             legacyBehavior

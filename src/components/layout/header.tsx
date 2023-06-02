@@ -1,10 +1,12 @@
+import React from 'react';
 import Link     from 'next/link'
 import { usePathname }   from 'next/navigation'
 import { 
   HomeIcon,
-  PencilIcon
+  HeartIcon,
+  PlusIcon,
+  MagnifyingGlassPlusIcon
  } from "@heroicons/react/20/solid";
-
 
 //TODO: Add the rest of the pages.
 const navItems: {
@@ -14,24 +16,28 @@ const navItems: {
    link?: string;
    icon?: any;
   }[] = [
-  {   label: 'Home',    
+    {   label: 'Home', 
       page: '/',
       description: '',
       icon: <HomeIcon className='h-10px w-10px' key={'nav.home'}/>,
     },
-    // { label: 'Places - Original',
-    //   page: '/places',
-    //   description: 'Original Places Concept'
-    // },
-    // { label: 'Places - Rebuild',
-    //   page: '/places-rebuild',
-    //   description: '' 
-    // },
     {
-      label: 'Blog',
-      page: '/blog',
-      description: 'Third rework of the cross-route animation concept.',
-      icon: <PencilIcon className='h-10px w-10px' key={'nav.home'}/>,
+      label: 'OG',
+      page: '/og',
+      description: 'Original build from Ryan.',
+      icon: <HeartIcon className='h-10px w-10px' key={'nav.r2'}/>,
+  },
+  {
+    label: 'R1',
+    page: '/r1',
+    description: 'My first rebuild when I start learning Framer and TailwindCss.',
+    icon: <PlusIcon className='h-10px w-10px' key={'nav.r1'}/>,
+  },
+    {
+      label: 'R2',
+      page: '/r2',
+      description: 'My second rebuild .',
+      icon: <MagnifyingGlassPlusIcon className='h-10px w-10px' key={'nav.r2'}/>,
   }
 ];
 
@@ -44,8 +50,8 @@ export default function Header({params}:any){
         <ul className={`flex flex-row justify-center text-center space-around max-w-[800px] m-auto gap-5 md:gap-10 lg:gap-10 xl:gap-10`}>
           {navItems.map(({ label, page, link, icon }) => (
             page &&
-              <Link className='group flex flex-row w-full' href={page}>
-                <li key={label} className={`group flex justify-center w-full gap-2`}>
+              <Link key={label} className='group flex flex-row w-full' href={page}>
+                <li className={`group flex justify-center w-full gap-2`}>
                   <span className='my-auto h-[20px] w-[20px] text-blue-400 group-hover:text-blue-500 drop-shadow-sm'>
                     {icon}
                   </span>

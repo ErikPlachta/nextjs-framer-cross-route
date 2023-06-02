@@ -1,8 +1,8 @@
 'use client';
 import './globals.css';
 
-import Link from 'next/link'
-import { AnimatePresence } from 'framer-motion'
+// import Link from 'next/link'
+// import { AnimatePresence } from 'framer-motion'
 
 import Header from '@/components/layout/header'
 
