@@ -14,11 +14,23 @@ const navItems: {
    link?: string;
    icon?: any;
   }[] = [
-  {   label: 'Home',    
+    {   label: 'Home', 
       page: '/',
       description: '',
       icon: <HomeIcon className='h-10px w-10px' key={'nav.home'}/>,
     },
+    {
+      label: 'OG',
+      page: '/og',
+      description: 'Original build from Ryan.',
+      // icon: <PencilIcon className='h-10px w-10px' key={'nav.r2'}/>,
+  },
+  {
+    label: 'R1',
+    page: '/r2',
+    description: 'My first rebuild when I start learning Framer and TailwindCss.',
+    // icon: <PencilIcon className='h-10px w-10px' key={'nav.r2'}/>,
+  },
     // { label: 'Places - Original',
     //   page: '/places',
     //   description: 'Original Places Concept'
@@ -28,10 +40,10 @@ const navItems: {
     //   description: '' 
     // },
     {
-      label: 'Blog',
-      page: '/blog',
-      description: 'Third rework of the cross-route animation concept.',
-      icon: <PencilIcon className='h-10px w-10px' key={'nav.home'}/>,
+      label: 'R2',
+      page: '/r2',
+      description: 'My second rebuild .',
+      icon: <PencilIcon className='h-10px w-10px' key={'nav.r3'}/>,
   }
 ];
 

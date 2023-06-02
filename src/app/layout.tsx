@@ -1,8 +1,14 @@
 'use client';
 import './globals.css';
+<<<<<<< HEAD
 import React from 'react';
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
+=======
+
+// import Link from 'next/link'
+// import { AnimatePresence } from 'framer-motion'
+>>>>>>> 209ddc6 (Update nav context.)
 
 import Header from '@/components/header';
 
