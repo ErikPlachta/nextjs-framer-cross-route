@@ -46,13 +46,19 @@ export default function Page() {
               showing: {
                 opacity: 1,
               },
-              whileHover: {
-                // transform: 'translateY(-1px)',
-                top: "-1px",
-                // left: "-5px",
+              hover: {
+                transform: 'translateY(-5px)',
               },
             }}
-            whileHover={'whileHover'}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 10,
+              mass: .5,
+              duration: 0.1
+              
+            }}
+            whileHover={'hover'}
           >
             
             {/**
@@ -63,12 +69,8 @@ export default function Page() {
               // className={`relative bg-gradient-to-tr ${post.blend} overflow-hidden rounded-md`}
               className={`relative h-[150px] bg-gradient-to-tr ${post.blend} overflow-hidden`}
               transition={{ ease: "easeOut" }}
-              initial={{ 
-                // height: 150,
-              }}
-              animate={{ 
-                // height: '150px',
-              }}
+              // initial={{ }}
+              // animate={{ }}
               style={{ originX: 0.5 }}
             >
               
@@ -77,26 +79,28 @@ export default function Page() {
                */}
               <motion.img
                 layoutId={`image-${post.slug}`}
-                transition={{ ease: "easeInOut" }}
                 src={post.image}
                 alt={post.title}
                 className="h-[150px] absolute w-full object-cover"
                 // className="absolute w-full object-cover mix-blend-soft-light"
-                initial={{
-                  // height: 0,
-                  opacity: 0.2,
+                initial={'initial'}
+                animate={'showing'}
+                whileHover={'hover'}
+                variants={{
+                  initial: {
+                    opacity: 0,
+                  },
+                  showing: {
+                    opacity: 0.9,
+                  },
+                  hover: {
+                    opacity: 1,
+                  },
                 }}
-                animate={{
-                  // height: 150,
-                  opacity: 0.85,
-                }}
-                whileHover={{
-                  opacity: .9,
-                }}
+                transition={{ ease: "easeInOut" }}
                 style={{
                   originX: 1,
                   objectPosition: post.position,
-                  
                 }}
               />
             </motion.div>
