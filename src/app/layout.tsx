@@ -1,10 +1,10 @@
 'use client';
 import './globals.css';
-
+import React from 'react';
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
 
-import Header from '@/components/layout/header'
+import Header from '@/components/header';
 
 const metadata = {
   title: 'Cross-Route Animation',
@@ -40,6 +40,7 @@ export default function RootLayout({
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/> */}
           {/* <link rel="manifest" href="/manifest.json" /> */}
 
+<<<<<<< HEAD
           <title>{metadata.title}</title>
         <body className={`h-100 min-h-[100%] bg-secondary`}>          
           {/* <header className='bg-secondary p-2'>
@@ -47,6 +48,15 @@ export default function RootLayout({
           </header> */}
           <Header/>
           {/*//TODO: 20230529 #EP || Add Navigation */}
+=======
+        <title>{metadata.title}</title>
+      <body className={`h-100 min-h-[100%] bg-secondary`}>
+        <header className='bg-secondary p-2'>
+          <Link href="/"><h1>{metadata.title}</h1></Link>
+        </header>
+        
+        {/*//TODO: 20230529 #EP || Add Navigation */}
+>>>>>>> 458d412 (Updated base building logic.)
 
           <main className='h-100vh min-h-[100vh] my-20 px-6 py-4 max-w-2xl mx-auto'>
             {children}

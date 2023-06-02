@@ -1,10 +1,10 @@
+import React from 'react';
 import Link     from 'next/link'
 import { usePathname }   from 'next/navigation'
 import { 
   HomeIcon,
   PencilIcon
  } from "@heroicons/react/20/solid";
-
 
 //TODO: Add the rest of the pages.
 const navItems: {
