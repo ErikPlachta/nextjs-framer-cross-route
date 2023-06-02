@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
+import ExtLink from '@/components/anchor/external';
+
 export default function Page() {
   //-- simulate query to database
   let data = getPostData();
@@ -121,7 +123,19 @@ export default function Page() {
   
   
   return (
-    <section className='flex flex-col gap-4 h-full'>
+    <section className='flex flex-col gap-4 h-full p-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
+
+      <div className="relative " >
+        <h1 className="page--title text-xl" >
+          Places - Rebuild 2
+        </h1>
+        
+        <div className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}>
+          June, 2023. Started rebuilding again, now that I&#39;ve had time to learn more
+          about Framer, TailwindCss and Next.js.
+        </div>
+      </div>
+
       {buildBlogData()}
     </section>
   );

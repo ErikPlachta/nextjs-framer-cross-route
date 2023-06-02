@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col p-4 rounded-lg max-w-2xl m-auto bg-slate-100 gap-4 shadow-sm shadow-slate-500">
-      <h1 className="page--title">
+      <h1 className="page--title text-xl">
         Places - Original
       </h1>
       
