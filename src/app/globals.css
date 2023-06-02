@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+/** NORMALIZING --------------------------------------------------------------*/
+
+/* .__next{
+    
+} */
+
+html {scroll-behavior: smooth;}
+
+*, *::after, ::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    vertical-align: baseline;
+}
+
+body {
+    scroll-behavior: smooth;
+    
+    /* Disabling user selection */
+    /* -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; */
+
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+#root { /* Container for the application excluding the header and footer. */
+    height: calc( 100vh - var(--header-height) - var(--footer-height) );
+}
+
