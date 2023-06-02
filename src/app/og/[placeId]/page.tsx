@@ -41,9 +41,9 @@ export default function Place({params}:any) {
 
   useEffect(() => {
     let id = setTimeout(() => {
-      pageAnimations.start("showing");
-      // if (!didStart.current) {
-      // }
+      if (!didStart.current) {
+        pageAnimations.start("showing");
+      }
     }, 300);
 
     return () => clearTimeout(id);

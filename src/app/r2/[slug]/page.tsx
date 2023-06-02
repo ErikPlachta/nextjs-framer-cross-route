@@ -1,5 +1,6 @@
+import React from "react";
 import Image from "next/image";
-import getPostData from '@/context/blog/posts';
+import getPostData from "@/context/blog/posts"
 import { useRouter } from "next/navigation";
 
 export default function Page({ params }:any) {
