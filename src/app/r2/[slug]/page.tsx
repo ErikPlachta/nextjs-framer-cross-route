@@ -154,7 +154,7 @@ export default function Page({ params }:any) {
             />
           </motion.div>
           
-          <motion.div className='p-6 pt-0'
+          <motion.div className='px-6'
             layoutId={`title-${post.slug}`}
             transition={{ ease: "easeOut" }}
             initial={{ color: "#f8fafc" }}
@@ -163,16 +163,17 @@ export default function Page({ params }:any) {
             <motion.h1 
               layout 
               className="block text-5xl font-semibold tracking-tighter"
+              
             >
               {post.title}
             </motion.h1>
           </motion.div>
-          {/* <p>{post.content}</p> */}
+          
           <motion.div
             initial="hidden"
             animate={handleAnimate}
             exit="exiting"
-            className="mt-6 text-base text-gray-700"
+            className="py-6 px-8 text-base text-gray-700"
             transition={{ ease: "easeOut" }}
             variants={{
               hidden: { opacity: 0, scale: 0.95, y: 15 },

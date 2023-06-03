@@ -105,7 +105,9 @@ export default function Page() {
               <motion.div
                 layoutId={`title-${post.id}`}
                 transition={{ ease: "easeInOut" }}
-                animate={{ color: "#f8fafc" }}
+                animate={{ 
+                  color: "#f8fafc"
+                }}
               >
                 <h3 className="block text-2xl font-semibold tracking-tighter">
                   {post.title}
