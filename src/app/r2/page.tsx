@@ -23,7 +23,20 @@ export default function Page() {
   return (
     <section className='flex flex-col gap-4 h-full p-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
 
-      <div className="relative" >
+      <motion.div className="relative" 
+        initial="hidden"
+        animate="showing"
+        variants={{
+          hidden:  { opacity: 0, y: 10 },
+          showing: { opacity: 1, y: 0 },
+        }}
+        transition={{ 
+          ease: "easeOut",
+          duration: .4,
+          delay: 0,
+          staggerChildren: .5,
+        }}
+      >
         <h1 className="page--title text-xl" >
           Places - Rebuild 2
         </h1>
@@ -32,7 +45,7 @@ export default function Page() {
           June, 2023. Started rebuilding again, now that I&#39;ve had time to learn more
           about Framer, TailwindCss and Next.js.
         </div>
-      </div>
+      </motion.div>
 
       {buildBlogData(data, slugRoutingTo, heightFrom, heightTo)}
     </section>
@@ -81,6 +94,7 @@ function buildBlogData(
               stiffness: 150,
               damping: 10,
               mass: 1,
+              duration: .1,
             }}
           
         >
@@ -89,7 +103,7 @@ function buildBlogData(
            * Container around image with gradient/blended background.
           */}
           <motion.div
-            layoutId={`image-wrapper-${post.slug}`}
+            layoutId={`image-wrapper-${post.slug} z-10`}
             className={`relative`}
             // className={`relative bg-gradient-to-tr ${post.blend}`}
             transition={{ ease: "easeOut" }}
@@ -111,20 +125,20 @@ function buildBlogData(
               whileHover={'hover'}
               variants={{
                 initial: {
-                  opacity: .7,
                   height: heightFrom,
                 },
                 showing: {
-                  opacity: 0.9,
                   height: heightTo
-                },
-                hover: {
-                  opacity: 1,
-                },
+                }
               }}
+              //-- This is what controls the speed of the image coming back in.
               transition={{ 
-                // ease: "easeOut",
-                // duration: .3,
+                // ease: "easeInOut",
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                mass: .5,
+                duration: .1,
               }}
               style={{
                 originX: 1,
@@ -138,15 +152,15 @@ function buildBlogData(
           */}
           <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
             <motion.div
-              layoutId={`title-${post.id}`}
-              transition={{ ease: "easeInOut" }}
+              layoutId={`title-${post.slug}`}
+              transition={{ ease: "easeOut" }}
               animate={{ 
-                color: "#f8fafc"
+                color: "#f8fafc",
               }}
             >
-              <h3 className="block text-2xl font-semibold tracking-tighter">
+              <motion.h3 layout className="block text-2xl font-semibold tracking-tighter">
                 {post.title}
-              </h3>
+              </motion.h3>
             </motion.div>
           </div>
         </motion.a>

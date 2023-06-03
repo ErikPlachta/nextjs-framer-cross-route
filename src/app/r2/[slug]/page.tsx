@@ -19,7 +19,7 @@ export default function Page({ params }:any) {
   let post = data.find((post) => post.slug === slug);
 
   //-- Delay animation unless user scrolls
-  let animationDelay = 200;
+  let animationDelay = 0;
   let handleAnimate  = useAnimation();
   let didStart = useRef(false);
 
@@ -44,7 +44,7 @@ export default function Page({ params }:any) {
     return (
       animate(current, to, {
         ease: "easeInOut",
-        duration: .2,
+        duration: .1,
         onUpdate(latest) {
           if (pathname === "/r2/[placeId]") {
             requestAnimationFrame(() => {

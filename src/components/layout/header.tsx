@@ -8,7 +8,6 @@ import {
   MagnifyingGlassPlusIcon
  } from "@heroicons/react/20/solid";
 
-//TODO: Add the rest of the pages.
 const navItems: {
    label: string;
    page?: string;

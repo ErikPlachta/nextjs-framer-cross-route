@@ -1,4 +1,3 @@
-
 import ExtLink from '@/components/anchor/external'
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
           . This is a rework of that concept I used to learn how it&#39;s working.
         </div>
       </article>
-
     </section>
   )
 }
