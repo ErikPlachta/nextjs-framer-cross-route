@@ -131,9 +131,14 @@ function buildBlogData(
                   height: heightTo
                 }
               }}
+              //-- This is what controls the speed of the image coming back in.
               transition={{ 
-                ease: "easeInOut",
-                duration: 1,
+                // ease: "easeInOut",
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                mass: .5,
+                duration: .1,
               }}
               style={{
                 originX: 1,
@@ -147,15 +152,15 @@ function buildBlogData(
           */}
           <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
             <motion.div
-              layoutId={`title-${post.id}`}
-              transition={{ ease: "easeInOut" }}
+              layoutId={`title-${post.slug}`}
+              transition={{ ease: "easeOut" }}
               animate={{ 
-                color: "#f8fafc"
+                color: "#f8fafc",
               }}
             >
-              <h3 className="block text-2xl font-semibold tracking-tighter">
+              <motion.h3 layout className="block text-2xl font-semibold tracking-tighter">
                 {post.title}
-              </h3>
+              </motion.h3>
             </motion.div>
           </div>
         </motion.a>
