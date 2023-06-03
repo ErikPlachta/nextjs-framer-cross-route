@@ -1,8 +1,9 @@
 'use client';
+import React from 'react';
 import './globals.css';
 
 import Header from '@/components/layout/header';
-import React from 'react';
+import Footer from '@/components/layout/footer';
 
 const metadata = {
   title: 'Cross-Route Animation',
@@ -32,9 +33,7 @@ export default function RootLayout({
             {children}
           </main>
           
-          <footer className='bottom-0 flex justify-center border-solid border-2 border-b-0 border-l-0 border-r-0 border-tertiary bg-primary py-2'>
-            Footer Placeholder
-          </footer>
+          <Footer />
         </body>
       </html>
   )
