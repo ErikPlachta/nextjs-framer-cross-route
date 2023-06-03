@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 /**
  * External Link component that opens in a new tab. 
@@ -17,7 +18,15 @@
  */
 export default function ExternalLink({target, rel, href, ...props}:any){
   return (
-    <a {...props} rel="noopener" target={props.target || '_blank'} />
+    <Link
+      className='hover:underline text-blue-500/90 hover:text-blue-500 cursor-pointer underline-offset-2'
+      href = {href}
+      // {...props}
+      rel="noopener"
+      target={props.target || '_blank'} 
+    >
+      {props.children}
+    </Link>
   )
 }
 

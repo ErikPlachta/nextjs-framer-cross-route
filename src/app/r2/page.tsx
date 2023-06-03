@@ -111,7 +111,7 @@ function buildBlogData(
               whileHover={'hover'}
               variants={{
                 initial: {
-                  opacity: .9,
+                  opacity: .7,
                   height: heightFrom,
                 },
                 showing: {
@@ -123,8 +123,8 @@ function buildBlogData(
                 },
               }}
               transition={{ 
-                ease: "easeInOut",
-                duration: .3,
+                // ease: "easeOut",
+                // duration: .3,
               }}
               style={{
                 originX: 1,

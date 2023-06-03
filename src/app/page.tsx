@@ -12,12 +12,10 @@ export default function Home() {
         </h1>
         <div className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}>
           Original concept built by {` `}
-          <ExtLink  href="https://github.com/ryanto/fmr-next-cross-route"
-                    className='underline text-blue-500 hover:text-blue-700'
-          >
+          <ExtLink  href="https://github.com/ryanto/fmr-next-cross-route">
             Ryan Toronto
           </ExtLink>
-          . This is a rework of that concept I used to learn how it `&#39;`s working.
+          . This is a rework of that concept I used to learn how it&#39;s working.
         </div>
       </article>
 

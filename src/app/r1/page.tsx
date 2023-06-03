@@ -26,9 +26,7 @@ export default function Places() {
         
         <div className={`relative bg-slate-100 overflow-hidden px-4 mx-4 rounded-md`}>
           Jan, 2023. Redesign of Ryan&#39;s example, by {` `}
-          <ExtLink  href='https://github.com/erikplachta'
-                    className='underline text-blue-500 hover:text-blue-700'
-          >
+          <ExtLink  href='https://github.com/ErikPlachta/nextjs-framer-cross-route'>
             Erik Plachta
           </ExtLink>
           , to learn more about Framer-Motion, NextJs, and CrossOrigin animations.
