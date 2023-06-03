@@ -125,7 +125,7 @@ export default function Page({ params }:any) {
       {post && (
         <>
           <motion.div
-            className={`relative mx-0 bg-gradient-to-tr ${post.blend} overflow-clip shadow-md rounded-tl-lg rounded-tr-lg`}
+            className={`relative mx-0 bg-gradient-to-tr ${imageGrowFinished.current && post.blend} overflow-clip shadow-md rounded-tl-lg rounded-tr-lg`}
             onLayoutAnimationStart={startResizeImage}
             layoutId={`photo-${post.slug}`}
             
@@ -161,6 +161,10 @@ export default function Page({ params }:any) {
             transition={{ ease: "easeOut" }}
             initial={{ color: "#f8fafc" }}
             animate={{ color: "#111827" }}
+            exit = {{ 
+              color: "#f8fafc",
+              transition: { duration: 0.2 }
+            }}
           >
             <motion.h1 
               layout 
@@ -187,7 +191,7 @@ export default function Page({ params }:any) {
                   staggerChildren: 0.05,
                 },
               },
-              exiting: { opacity: 0 },
+              exiting: {  opacity: 0 },
             }}
           >
             {post.content.split("\n").map((paragraph, index) => (
