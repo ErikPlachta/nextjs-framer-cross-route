@@ -116,7 +116,7 @@ export default function Page({ params }:any) {
             <ChevronLeftIcon className="h-4 w-4" />
             Back
           </motion.a>
-        </Link>
+      </Link>
 
       {post && (
         <>
@@ -133,24 +133,22 @@ export default function Page({ params }:any) {
               className="w-full object-cover"
               src={post.image}
               alt={post.title}
-              initial={'hidden'}
-              animate={'showing'}
+              initial={'initial'}
+              animate={'animated'}
               variants={{
-                hidden: {
-                  // opacity: 0,
-                  height: "150px",
+                initial: {
+                  height: 150,
                   shadow: "0px 0px 0px 0px rgba(0, 0, 0, 1)"
                 },
-                showing: { 
-                  height: "400px",
-                  // opacity: 1 
+                animated: { 
+                  height: 400,
                 },
               }}
-              transition={{ ease: "easeOut"}}
               style={{
                 originX: 0.5,
                 objectPosition: post.position,
               }}
+              transition={{ ease: "easeOut"}}
             />
           </motion.div>
           

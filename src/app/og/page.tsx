@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ExtLink from '@/components/anchor/external';
 
 export default function Home() {
-  let router = useRouter();
+  // let router = useRouter();
   let searchParams = useSearchParams();
   let goingToPlace = searchParams.get("slug");
 
@@ -75,6 +75,11 @@ export default function Home() {
                 }}
               />
             </motion.div>
+            
+            
+            {/** 
+             * The title of the place is positioned absolutely at the bottom left of the image.
+             */}
             <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
               <motion.div
                 layoutId={`title-${place.id}`}

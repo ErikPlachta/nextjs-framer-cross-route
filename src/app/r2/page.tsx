@@ -1,25 +1,24 @@
-// import Image from "next/image";
 "use client";
 import { motion } from "framer-motion";
 import getPostData from '@/context/blog/posts';
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
-
-import ExtLink from '@/components/anchor/external';
+// import ExtLink from '@/components/anchor/external';
 
 export default function Page() {
   //-- simulate query to database
   let data = getPostData();
   
   //-- Extracting where to navigating to 
-  const router = useSearchParams();
+  // const router = useSearchParams();
   const searchParams = useSearchParams();
-  let postIdRoutingTo = searchParams.get("slug");
+  let slugRoutingTo = searchParams.get("slug");
 
-  
+  /**
+   * Builds the post data dynamically, returns to primary return.
+   */
   function buildBlogData():any{
-    
     return (
       data.map((post) => {
         return (
@@ -35,23 +34,26 @@ export default function Page() {
            * Parent Element around each post.
           */}
           <motion.a
-            className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
+            className="relative block mx-2 rounded-md shadow shadow-slate-900/40"
+            // className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
             initial="hidden"
             animate="showing"
-            exit={post.slug === postIdRoutingTo ? "showing" : "hidden"}
+            exit={post.slug === slugRoutingTo ? "showing" : "hidden"}
             variants={{
-              hidden: { opacity: 0 },
+              hidden: { opacity: .7 },
               showing: { opacity: 1},
               hover: { transform: 'translateY(-2px)' },
             }}
-            transition={{
-              type: "spring",
-              stiffness: 200,
-              damping: 10,
-              mass: .5,
-              duration: 0.1
-              
-            }}
+            // transition={{
+            //   ease: "easeInOut"
+            // }}
+            // transition={{
+            //   type: "spring",
+            //   stiffness: 200,
+            //   damping: 10,
+            //   mass: .5,
+            //   duration: 0.5
+            // }}
             whileHover={'hover'}
           >
             
@@ -60,11 +62,10 @@ export default function Page() {
             */}
             <motion.div
               layoutId={`image-wrapper-${post.slug}`}
-              // className={`relative bg-gradient-to-tr ${post.blend} overflow-hidden rounded-md`}
-              className={`relative h-[150px] bg-gradient-to-tr ${post.blend} overflow-hidden`}
+              className={`relative bg-gradient-to-tr ${post.blend}`}
               transition={{ ease: "easeOut" }}
-              // initial={{ }}
-              // animate={{ }}
+              initial={{ height: 400 }}
+              animate={{ height: 150 }}
               style={{ originX: 0.5 }}
             >
               
@@ -75,22 +76,27 @@ export default function Page() {
                 layoutId={`image-${post.slug}`}
                 src={post.image}
                 alt={post.title}
-                className="h-[150px] absolute w-full object-cover"
+                className="absolute w-full object-cover rounded-md"
                 initial={'initial'}
                 animate={'showing'}
                 whileHover={'hover'}
                 variants={{
                   initial: {
-                    opacity: 0,
+                    opacity: .5,
+                    height: 400,
                   },
                   showing: {
                     opacity: 0.9,
+                    height: 150
                   },
                   hover: {
                     opacity: 1,
                   },
                 }}
-                transition={{ ease: "easeInOut" }}
+                transition={{ 
+                  ease: "easeInOut",
+                  duration: 0.5
+                }}
                 style={{
                   originX: 1,
                   objectPosition: post.position,
@@ -126,7 +132,7 @@ export default function Page() {
   return (
     <section className='flex flex-col gap-4 h-full p-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
 
-      <div className="relative " >
+      <div className="relative" >
         <h1 className="page--title text-xl" >
           Places - Rebuild 2
         </h1>
