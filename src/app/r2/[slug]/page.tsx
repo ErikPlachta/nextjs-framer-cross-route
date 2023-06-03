@@ -27,6 +27,10 @@ export default function Page({ params }:any) {
   //-- Image height from and to finished
   let imageGrowFinished = useRef(false);
 
+  //-- Heights opposite from [slug]
+  let heightFrom: number = 200;
+  let heightTo: number = 400;
+
 
   /** Executed on initial render. */
   async function startResizeImage():Promise<boolean> {
@@ -137,11 +141,11 @@ export default function Page({ params }:any) {
               animate={'animated'}
               variants={{
                 initial: {
-                  height: 150,
+                  height: heightFrom,
                   shadow: "0px 0px 0px 0px rgba(0, 0, 0, 1)"
                 },
                 animated: { 
-                  height: 400,
+                  height: heightTo,
                 },
               }}
               style={{

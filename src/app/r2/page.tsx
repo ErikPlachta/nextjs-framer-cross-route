@@ -9,11 +9,14 @@ import React from "react";
 export default function Page() {
   //-- simulate query to database
   let data = getPostData();
-  
-  //-- Extracting where to navigating to 
-  // const router = useSearchParams();
-  const searchParams = useSearchParams();
-  let slugRoutingTo = searchParams.get("slug");
+
+  //-- 
+  // const searchParams = useSearchParams();
+  let slugRoutingTo = (useSearchParams()).get("slug");
+
+  //-- Heights opposite from [slug]
+  let heightFrom: number = 400;
+  let heightTo: number = 200;
 
   /**
    * Builds the post data dynamically, returns to primary return.
@@ -42,18 +45,19 @@ export default function Page() {
             variants={{
               hidden: { opacity: .7 },
               showing: { opacity: 1},
-              hover: { transform: 'translateY(-2px)' },
+              hover: { 
+                transform: 'translateY(-2px)',
+                // transition : {
+                //   type: "spring",
+                //   stiffness: 200,
+                //   damping: 10,
+                //   mass: .5,
+                //   duration: .1
+                // }
+              },
             }}
-            // transition={{
-            //   ease: "easeInOut"
-            // }}
-            // transition={{
-            //   type: "spring",
-            //   stiffness: 200,
-            //   damping: 10,
-            //   mass: .5,
-            //   duration: 0.5
-            // }}
+            // transition={{ ease: "easeInOut" }}
+            
             whileHover={'hover'}
           >
             
@@ -62,10 +66,11 @@ export default function Page() {
             */}
             <motion.div
               layoutId={`image-wrapper-${post.slug}`}
-              className={`relative bg-gradient-to-tr ${post.blend}`}
+              className={`relative`}
+              // className={`relative bg-gradient-to-tr ${post.blend}`}
               transition={{ ease: "easeOut" }}
-              initial={{ height: 400 }}
-              animate={{ height: 150 }}
+              initial={{ height: heightFrom }}
+              animate={{ height: heightTo }}
               style={{ originX: 0.5 }}
             >
               
@@ -82,20 +87,20 @@ export default function Page() {
                 whileHover={'hover'}
                 variants={{
                   initial: {
-                    opacity: .5,
-                    height: 400,
+                    opacity: .9,
+                    height: heightFrom,
                   },
                   showing: {
                     opacity: 0.9,
-                    height: 150
+                    height: heightTo
                   },
                   hover: {
                     opacity: 1,
                   },
                 }}
                 transition={{ 
-                  ease: "easeInOut",
-                  duration: 0.5
+                  ease: "easeOut",
+                  duration: 0.2
                 }}
                 style={{
                   originX: 1,
