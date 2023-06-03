@@ -174,8 +174,8 @@ export default function Place({params}:any) {
             className="relative z-10"
           >
             <motion.h1
-              className="block text-5xl font-semibold tracking-tighter"
               layout
+              className="block text-5xl font-semibold tracking-tighter"
             >
               {place.title}
             </motion.h1>

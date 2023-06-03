@@ -104,10 +104,13 @@ export default function Page({ params }:any) {
             }
             initial="hidden"
             animate={handleAnimate}
-            exit="hidden"
+            exit="exiting"
             variants={{
               hidden: { opacity: 0 },
               showing: { opacity: 1 },
+              exiting: {
+                transition: { opacity: 0 },
+              }
             }}
           >
             <ChevronLeftIcon className="h-4 w-4" />
@@ -157,36 +160,38 @@ export default function Page({ params }:any) {
             initial={{ color: "#f8fafc" }}
             animate={{ color: "#111827" }}
           >
-            <motion.h1 layout 
+            <motion.h1 
+              layout 
               className="block text-5xl font-semibold tracking-tighter"
             >
-              {post.title}</motion.h1>
-            {/* <p>{post.content}</p> */}
-            <motion.div
-              initial="hidden"
-              animate={handleAnimate}
-              exit="exiting"
-              className="mt-6 text-base text-gray-700"
-              transition={{ ease: "easeOut" }}
-              variants={{
-                hidden: { opacity: 0, scale: 0.95, y: 15 },
-                showing: {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  transition: {
-                    staggerChildren: 0.05,
-                  },
+              {post.title}
+            </motion.h1>
+          </motion.div>
+          {/* <p>{post.content}</p> */}
+          <motion.div
+            initial="hidden"
+            animate={handleAnimate}
+            exit="exiting"
+            className="mt-6 text-base text-gray-700"
+            transition={{ ease: "easeOut" }}
+            variants={{
+              hidden: { opacity: 0, scale: 0.95, y: 15 },
+              showing: {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                transition: {
+                  staggerChildren: 0.05,
                 },
-                exiting: { opacity: 0 },
-              }}
-            >
-              {post.content.split("\n").map((paragraph, index) => (
-                <motion.p className={index !== 0 ? "mt-4" : ""} key={index}>
-                  {paragraph}
-                </motion.p>
-              ))}
-            </motion.div>
+              },
+              exiting: { opacity: 0 },
+            }}
+          >
+            {post.content.split("\n").map((paragraph, index) => (
+              <motion.p className={index !== 0 ? "mt-4" : ""} key={index}>
+                {paragraph}
+              </motion.p>
+            ))}
           </motion.div>
         </>
       )}
