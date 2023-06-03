@@ -123,8 +123,8 @@ function buildBlogData(
                 },
               }}
               transition={{ 
-                ease: "easeOut",
-                duration: 2
+                ease: "easeInOut",
+                duration: .3,
               }}
               style={{
                 originX: 1,
