@@ -23,7 +23,20 @@ export default function Page() {
   return (
     <section className='flex flex-col gap-4 h-full p-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
 
-      <div className="relative" >
+      <motion.div className="relative" 
+        initial="hidden"
+        animate="showing"
+        variants={{
+          hidden:  { opacity: 0, y: 10 },
+          showing: { opacity: 1, y: 0 },
+        }}
+        transition={{ 
+          ease: "easeOut",
+          duration: .4,
+          delay: 0,
+          staggerChildren: .5,
+        }}
+      >
         <h1 className="page--title text-xl" >
           Places - Rebuild 2
         </h1>
@@ -32,7 +45,7 @@ export default function Page() {
           June, 2023. Started rebuilding again, now that I&#39;ve had time to learn more
           about Framer, TailwindCss and Next.js.
         </div>
-      </div>
+      </motion.div>
 
       {buildBlogData(data, slugRoutingTo, heightFrom, heightTo)}
     </section>
@@ -89,7 +102,7 @@ function buildBlogData(
            * Container around image with gradient/blended background.
           */}
           <motion.div
-            layoutId={`image-wrapper-${post.slug}`}
+            layoutId={`image-wrapper-${post.slug} z-10`}
             className={`relative`}
             // className={`relative bg-gradient-to-tr ${post.blend}`}
             transition={{ ease: "easeOut" }}
