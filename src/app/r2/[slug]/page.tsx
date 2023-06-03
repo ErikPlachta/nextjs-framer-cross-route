@@ -27,8 +27,14 @@ export default function Page({ params }:any) {
   //-- Image height from and to finished
   let imageGrowFinished = useRef(false);
 
+  //-- Heights opposite from [slug]
+  let heightFrom: number = 200;
+  let heightTo: number = 400;
 
-  /** Executed on initial render. */
+
+  /** 
+   * Executed on initial render, manages animation of image growing.
+   * */
   async function startResizeImage():Promise<boolean> {
     //-- Get number of pixels for element to top of page.
     let current = document.documentElement.scrollTop;
@@ -37,7 +43,8 @@ export default function Page({ params }:any) {
 
     return (
       animate(current, to, {
-        ease: "easeOut",
+        ease: "easeInOut",
+        duration: .2,
         onUpdate(latest) {
           if (pathname === "/r2/[placeId]") {
             requestAnimationFrame(() => {
@@ -83,7 +90,7 @@ export default function Page({ params }:any) {
   //----------------------------------------------------------------------------
   //-- Render not found.
   if(!post) return (
-    <div className="flex flex-col py-0 px-0 mx-auto gap-4 rounded-lg max-w-2xl overflow-hidden bg-slate-100 shadow-sm shadow-slate-500">
+    <div className="flex flex-col py-0 px-0 mx-auto gap-4 rounded-lg max-w-2xl bg-slate-100 shadow-sm shadow-slate-500">
       <div className="relative px-6">
         ERROR: Place not found with place id: ${slug}
       </div>
@@ -94,7 +101,7 @@ export default function Page({ params }:any) {
   //----------------------------------------------------------------------------
   //-- Otherwise render post.
   return (
-    <article className='relative flex flex-col gap-4 h-full rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
+    <article className='relative flex flex-col gap-4 h-full rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500 rounded-tl-lg rounded-tr-lg'>
 
       <Link href="/r2" passHref scroll={false} legacyBehavior>
         <motion.a
@@ -116,12 +123,12 @@ export default function Page({ params }:any) {
             <ChevronLeftIcon className="h-4 w-4" />
             Back
           </motion.a>
-        </Link>
+      </Link>
 
       {post && (
         <>
           <motion.div
-            className={`relative mx-0 bg-gradient-to-tr ${post.blend} overflow-clip shadow-md rounded-tl-lg rounded-tr-lg`}
+            className={`relative mx-0 bg-gradient-to-tr ${imageGrowFinished.current && post.blend} rounded-tl-lg rounded-tr-lg`}
             onLayoutAnimationStart={startResizeImage}
             layoutId={`photo-${post.slug}`}
             
@@ -130,27 +137,25 @@ export default function Page({ params }:any) {
               // layoutId={`photo-${post.slug}`}
               layoutId={`image-${post.slug}`}
               // className='rounded-tl-xl rounded-tr-xl object-cover'
-              className="w-full object-cover"
+              className="w-full object-cover rounded-tl-lg rounded-tr-lg shadow-md"
               src={post.image}
               alt={post.title}
-              initial={'hidden'}
-              animate={'showing'}
+              initial={'initial'}
+              animate={'animated'}
               variants={{
-                hidden: {
-                  // opacity: 0,
-                  height: "150px",
+                initial: {
+                  height: heightFrom,
                   shadow: "0px 0px 0px 0px rgba(0, 0, 0, 1)"
                 },
-                showing: { 
-                  height: "400px",
-                  // opacity: 1 
+                animated: { 
+                  height: heightTo,
                 },
               }}
-              transition={{ ease: "easeOut"}}
               style={{
                 originX: 0.5,
                 objectPosition: post.position,
               }}
+              transition={{ ease: "easeOut"}}
             />
           </motion.div>
           
@@ -159,6 +164,10 @@ export default function Page({ params }:any) {
             transition={{ ease: "easeOut" }}
             initial={{ color: "#f8fafc" }}
             animate={{ color: "#111827" }}
+            exit = {{ 
+              color: "#f8fafc",
+              transition: { duration: 0.2 }
+            }}
           >
             <motion.h1 
               layout 
@@ -185,7 +194,7 @@ export default function Page({ params }:any) {
                   staggerChildren: 0.05,
                 },
               },
-              exiting: { opacity: 0 },
+              exiting: {  opacity: 0 },
             }}
           >
             {post.content.split("\n").map((paragraph, index) => (
