@@ -66,13 +66,9 @@ export default function Home() {
                 transition={{ ease: "easeOut" }}
                 src={place.image}
                 alt={place.name}
-                className="absolute w-full object-cover mix-blend-soft-light"
-                initial={{
-                  height: 600,
-                }}
-                animate={{
-                  height: 400,
-                }}
+                className="absolute w-full object-cover"
+                initial={{ height: 600 }}
+                animate={{ height: 400 }}
                 style={{
                   originX: 0.5,
                   objectPosition: place.position,

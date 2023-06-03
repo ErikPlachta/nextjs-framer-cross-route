@@ -38,21 +38,21 @@ export default function Page() {
             className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
             initial="hidden"
             animate="showing"
-            exit={post.id === postIdRoutingTo ? "showing" : "hidden"}
+            exit={post.slug === postIdRoutingTo ? "showing" : "hidden"}
             variants={{
-              hidden: {
-                opacity: 0,
-              },
-              showing: {
-                opacity: 1,
-              },
-              whileHover: {
-                // transform: 'translateY(-1px)',
-                top: "-1px",
-                // left: "-5px",
-              },
+              hidden: { opacity: 0 },
+              showing: { opacity: 1},
+              hover: { transform: 'translateY(-2px)' },
             }}
-            whileHover={'whileHover'}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 10,
+              mass: .5,
+              duration: 0.1
+              
+            }}
+            whileHover={'hover'}
           >
             
             {/**
@@ -63,12 +63,8 @@ export default function Page() {
               // className={`relative bg-gradient-to-tr ${post.blend} overflow-hidden rounded-md`}
               className={`relative h-[150px] bg-gradient-to-tr ${post.blend} overflow-hidden`}
               transition={{ ease: "easeOut" }}
-              initial={{ 
-                // height: 150,
-              }}
-              animate={{ 
-                // height: '150px',
-              }}
+              // initial={{ }}
+              // animate={{ }}
               style={{ originX: 0.5 }}
             >
               
@@ -77,26 +73,27 @@ export default function Page() {
                */}
               <motion.img
                 layoutId={`image-${post.slug}`}
-                transition={{ ease: "easeInOut" }}
                 src={post.image}
                 alt={post.title}
                 className="h-[150px] absolute w-full object-cover"
-                // className="absolute w-full object-cover mix-blend-soft-light"
-                initial={{
-                  // height: 0,
-                  opacity: 0.2,
+                initial={'initial'}
+                animate={'showing'}
+                whileHover={'hover'}
+                variants={{
+                  initial: {
+                    opacity: 0,
+                  },
+                  showing: {
+                    opacity: 0.9,
+                  },
+                  hover: {
+                    opacity: 1,
+                  },
                 }}
-                animate={{
-                  // height: 150,
-                  opacity: 0.85,
-                }}
-                whileHover={{
-                  opacity: .9,
-                }}
+                transition={{ ease: "easeInOut" }}
                 style={{
                   originX: 1,
                   objectPosition: post.position,
-                  
                 }}
               />
             </motion.div>
@@ -108,7 +105,9 @@ export default function Page() {
               <motion.div
                 layoutId={`title-${post.id}`}
                 transition={{ ease: "easeInOut" }}
-                animate={{ color: "#f8fafc" }}
+                animate={{ 
+                  color: "#f8fafc"
+                }}
               >
                 <h3 className="block text-2xl font-semibold tracking-tighter">
                   {post.title}
@@ -122,6 +121,8 @@ export default function Page() {
   )}
   
   
+  //----------------------------------------------------------------------------
+  //-- Render Page
   return (
     <section className='flex flex-col gap-4 h-full p-4 rounded-lg max-w-2xl m-auto bg-slate-100 shadow-sm shadow-slate-500'>
 
