@@ -20,19 +20,19 @@ export default function getPosts() {
         title: "Lake Como",
         slug: "lake-como",
         image: "/assets/images/places/lake-como.jpg",
-        position: "center 56%",
+        position: "center 75%",
         blend: "from-red-900/20 to-amber-300/20",
         // blend: "from-red-900/20 to-amber-300/20",
         
         content:
-          "Lake Como (Italian: Lago di Como [ˈlaːɡo di ˈkɔːmo], locally [ˈkoːmo]; Western Lombard: Lagh de Còmm [ˈlɑː‿dːe ˈkɔm],[a] Cómm [ˈkom] or Cùmm [ˈkum]), also known as Lario (Italian: [ˈlaːrjo]; after the Latin: Larius Lacus), is a lake of glacial origin in Lombardy, Italy. It has an area of 146 square kilometres (56 sq mi), making it the third-largest lake in Italy, after Lake Garda and Lake Maggiore. At over 400 metres (1,300 ft) deep, it is the fifth deepest lake in Europe, and the deepest outside Norway; the bottom of the lake is more than 200 metres (660 ft) below sea level.",
+          "Lake Como (Italian: Lago di Como [ˈlaːɡo di ˈkɔːmo], locally [ˈkoːmo]; Western Lombard: Lagh de Còmm [ˈlɑː‿dːe ˈkɔm],[a] Cómm [ˈkom] or Cùmm [ˈkum]), also known as Lario (Italian: [ˈlaːrjo]; after the Latin: Larius Lacus), is a lake of glacial origin in Lombardy, Italy.\nIt has an area of 146 square kilometres (56 sq mi), making it the third-largest lake in Italy, after Lake Garda and Lake Maggiore.\nAt over 400 metres (1,300 ft) deep, it is the fifth deepest lake in Europe, and the deepest outside Norway.\nThe bottom of the lake is more than 200 metres (660 ft) below sea level.",
       },
       {
         id: "2",
         title: "Aspen",
         slug : 'aspen',
         image: "/assets/images/places/aspen.jpg",
-        position: "58% 50%",
+        position: "center 50%",
         blend: "from-purple-500/50 to-blue-500/40",
         content:
           'Founded as a mining camp during the Colorado Silver Boom and later named Aspen for the abundance of aspen trees in the area, the city boomed during the 1880s, its first decade. The boom ended when the Panic of 1893 led to a collapse of the silver market. For the next half-century, known as "the quiet years", the population steadily declined, reaching a nadir of fewer than 1000 by 1930.\n Aspen\'s fortunes recovered in the mid-20th century when neighboring Aspen Mountain was developed into a ski resort, and industrialist Walter Paepcke bought many properties in the city in the 1950s and redeveloped them. Today it is home to three institutions, two of which Paepcke helped found, that have international importance: the Aspen Music Festival and School, the Aspen Institute, and the Aspen Center for Physics.',

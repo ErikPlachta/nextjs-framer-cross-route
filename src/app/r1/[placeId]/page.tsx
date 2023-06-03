@@ -11,8 +11,8 @@ import getPlaces from "@/context/blog/posts";
 /** Each individual place. */
 export default function Place({params}:any) {
   
-  let animationDelay = 1000;
-  let router = useRouter();
+  let animationDelay = 500;
+  // let router = useRouter();
   let pathname = usePathname();
   let pageAnimations = useAnimation();
   const places = getPlaces();
@@ -23,17 +23,12 @@ export default function Place({params}:any) {
 
   //----------
   //-- Styling for images
-
-  let imageHeightMax = 600;
-  
   let imageHeightFrom = '25vh';
   let imageHeightTo   = '60vh';
 
-  let viewportHeight = useRef(0); //window.innerHeight;
-  let viewportWidth = useRef(0); //window.innerWidth;
 
-
-  /** Flag to verify page is rendered for the first time, and should call `startScrolling()`.
+  /**
+   * Flag to verify page is rendered for the first time, and should call `startScrolling()`.
    * 
    * When `useEffect` runs, if `didStart` is false, the function `startScrolling`
    * sets `didStart` to `true`, and the pageAnimation `showing` is started.
@@ -43,7 +38,8 @@ export default function Place({params}:any) {
   /** Flag to verify if scroll is happening or not used by `useEffect`. */
   let scrollFinished = useRef(false);
   
-  /** Conditional to slide image to top of page if needed based on it's position to top page.
+  /** 
+   * Conditional to slide image to top of page if needed based on it's position to top page.
    * 
    * This function is used only if the scroll position is not at the top of the
    * page. Otherwise, the pageAnimation `showing` is started by useEffect.
@@ -59,7 +55,7 @@ export default function Place({params}:any) {
     animate(current, to, {
       ease: "easeOut",
       onUpdate(latest) {
-        if (pathname === "/r2/[placeId]") {
+        if (pathname === "/r1/[placeId]") {
           requestAnimationFrame(() => {
             window.scrollTo(to, latest);
           });
@@ -76,7 +72,7 @@ export default function Place({params}:any) {
   useEffect(() => {
     
     /** Checking to see if page animation should be managed by `useEffect` or `startScrolling`. */
-    let id = setTimeout(() => {             
+    let id = setTimeout(() => {
       
       //-- IF `startScrolling` isn't called, THEN start Framer animation showing content.
       if (!didStart.current && !scrollFinished.current) {
@@ -137,6 +133,7 @@ export default function Place({params}:any) {
             Back
           </motion.a>
         </Link>
+        
         <motion.div
           layoutId={`photo-${place.id}`}
           onLayoutAnimationStart={startScrolling}
@@ -167,6 +164,7 @@ export default function Place({params}:any) {
             }}
           />
         </motion.div>
+        
         <div className="pt-12">
           <motion.div
             layoutId={`title-${place.id}`}
@@ -176,12 +174,13 @@ export default function Place({params}:any) {
             className="relative z-10"
           >
             <motion.h1
-              className="block text-5xl font-semibold tracking-tighter"
               layout
+              className="block text-5xl font-semibold tracking-tighter"
             >
               {place.title}
             </motion.h1>
           </motion.div>
+          
           <motion.div
             initial="hidden"
             animate={pageAnimations}
@@ -207,6 +206,7 @@ export default function Place({params}:any) {
               </motion.p>
             ))}
           </motion.div>
+          
         </div>
       </div>
     </article>
