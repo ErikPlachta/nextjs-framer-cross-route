@@ -19,7 +19,7 @@ export default function Page({ params }:any) {
   let post = data.find((post) => post.slug === slug);
 
   //-- Delay animation unless user scrolls
-  let animationDelay = 500;
+  let animationDelay = 200;
   let handleAnimate  = useAnimation();
   let didStart = useRef(false);
 
@@ -29,37 +29,49 @@ export default function Page({ params }:any) {
 
 
   /** Executed on initial render. */
-  let startResizeImage = async () => {
+  async function startResizeImage():Promise<boolean> {
     //-- Get number of pixels for element to top of page.
     let current = document.documentElement.scrollTop;
     //-- top of the page.
     let to = 0;
 
-    animate(current, to, {
-      ease: "easeOut",
-      onUpdate(latest) {
-        if (pathname === "/r2/[placeId]") {
-          requestAnimationFrame(() => {
-            window.scrollTo(to, latest);
-          });
-        }
-      },
-      onComplete() {
-        imageGrowFinished.current = true;
-        return true;
-      },
-    });
+    return (
+      animate(current, to, {
+        ease: "easeOut",
+        onUpdate(latest) {
+          if (pathname === "/r2/[placeId]") {
+            requestAnimationFrame(() => {
+              window.scrollTo(to, latest);
+            });
+          }
+        },
+        onComplete() {
+          console.log('imageGrowFinished()')
+          imageGrowFinished.current = true;
+          return true;
+        },
+      })
+    );
   };
 
 
   //-- Start animation if user has not scrolled
   useEffect(() => {
     //-- Start animation if user has not scrolled
-    let id = setTimeout(() => {
+    let id = setTimeout( async () => {
       if (!imageGrowFinished.current) {
         console.log('startResizeImage()')
-
-        startResizeImage();
+        let finishedLoading = await startResizeImage()
+          .then( async () => {
+            await handleAnimate.start("showing");
+            return true;
+          }
+        ).then( (results) => {
+          console.log('handleAnimate.start("showing") results: ', results)
+          didStart.current = results
+          return true;
+        });
+          
       }
     }, animationDelay);
     
@@ -104,26 +116,79 @@ export default function Page({ params }:any) {
         </Link>
 
       {post && (
-        <motion.div
-        onLayoutAnimationStart={startResizeImage}
-        >
-          <motion.img
-            className='rounded-tl-xl rounded-tr-xl object-cover'
-            src={post.image}
-            alt={post.title}
-            animate={handleAnimate}
-            transition={{ ease: "easeOut", duration: 0.5 }}
-            initial="hidden"
-            variants={{
-              hidden: { opacity: 0 },
-              showing: { height: "300px", opacity: 1 },
-            }}
-          />
-          <div className='p-4'>
-            <h1>{post.title}</h1>
-            <p>{post.content}</p>
-          </div>
-        </motion.div>
+        <>
+          <motion.div
+            className={`relative mx-0 bg-gradient-to-tr ${post.blend} overflow-clip shadow-md rounded-tl-lg rounded-tr-lg`}
+            onLayoutAnimationStart={startResizeImage}
+            layoutId={`photo-${post.slug}`}
+            
+          >
+            <motion.img
+              // layoutId={`photo-${post.slug}`}
+              layoutId={`image-${post.slug}`}
+              // className='rounded-tl-xl rounded-tr-xl object-cover'
+              className="w-full object-cover"
+              src={post.image}
+              alt={post.title}
+              initial={'hidden'}
+              animate={'showing'}
+              variants={{
+                hidden: {
+                  // opacity: 0,
+                  height: "150px",
+                  shadow: "0px 0px 0px 0px rgba(0, 0, 0, 1)"
+                },
+                showing: { 
+                  height: "400px",
+                  // opacity: 1 
+                },
+              }}
+              transition={{ ease: "easeOut"}}
+              style={{
+                originX: 0.5,
+                objectPosition: post.position,
+              }}
+            />
+          </motion.div>
+          
+          <motion.div className='p-6 pt-0'
+            layoutId={`title-${post.slug}`}
+            transition={{ ease: "easeOut" }}
+            initial={{ color: "#f8fafc" }}
+            animate={{ color: "#111827" }}
+          >
+            <motion.h1 layout 
+              className="block text-5xl font-semibold tracking-tighter"
+            >
+              {post.title}</motion.h1>
+            {/* <p>{post.content}</p> */}
+            <motion.div
+              initial="hidden"
+              animate={handleAnimate}
+              exit="exiting"
+              className="mt-6 text-base text-gray-700"
+              transition={{ ease: "easeOut" }}
+              variants={{
+                hidden: { opacity: 0, scale: 0.95, y: 15 },
+                showing: {
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
+                  transition: {
+                    staggerChildren: 0.05,
+                  },
+                },
+                exiting: { opacity: 0 },
+              }}
+            >
+              {post.content.split("\n").map((paragraph, index) => (
+                <motion.p className={index !== 0 ? "mt-4" : ""} key={index}>
+                  {paragraph}
+                </motion.p>
+              ))}
+            </motion.div>
+          </motion.div>
+        </>
       )}
     </article>
   );

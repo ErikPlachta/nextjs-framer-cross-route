@@ -25,7 +25,7 @@ export default function getPosts() {
         // blend: "from-red-900/20 to-amber-300/20",
         
         content:
-          "Lake Como (Italian: Lago di Como [ˈlaːɡo di ˈkɔːmo], locally [ˈkoːmo]; Western Lombard: Lagh de Còmm [ˈlɑː‿dːe ˈkɔm],[a] Cómm [ˈkom] or Cùmm [ˈkum]), also known as Lario (Italian: [ˈlaːrjo]; after the Latin: Larius Lacus), is a lake of glacial origin in Lombardy, Italy. It has an area of 146 square kilometres (56 sq mi), making it the third-largest lake in Italy, after Lake Garda and Lake Maggiore. At over 400 metres (1,300 ft) deep, it is the fifth deepest lake in Europe, and the deepest outside Norway; the bottom of the lake is more than 200 metres (660 ft) below sea level.",
+          "Lake Como (Italian: Lago di Como [ˈlaːɡo di ˈkɔːmo], locally [ˈkoːmo]; Western Lombard: Lagh de Còmm [ˈlɑː‿dːe ˈkɔm],[a] Cómm [ˈkom] or Cùmm [ˈkum]), also known as Lario (Italian: [ˈlaːrjo]; after the Latin: Larius Lacus), is a lake of glacial origin in Lombardy, Italy.\nIt has an area of 146 square kilometres (56 sq mi), making it the third-largest lake in Italy, after Lake Garda and Lake Maggiore.\nAt over 400 metres (1,300 ft) deep, it is the fifth deepest lake in Europe, and the deepest outside Norway.\nThe bottom of the lake is more than 200 metres (660 ft) below sea level.",
       },
       {
         id: "2",

@@ -69,9 +69,7 @@ export default function Places() {
               className={`relative bg-gradient-to-tr ${place.blend} overflow-hidden rounded-md`}
               initial={{ height: 0 }}
               animate={{ height: 200 }}
-              transition={{ 
-                ease: "easeOut" 
-              }}
+              transition={{  ease: "easeOut" }}
               style={{ originX: 0.5 }}
             >
               

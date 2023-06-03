@@ -164,6 +164,7 @@ export default function Place({params}:any) {
             }}
           />
         </motion.div>
+        
         <div className="pt-12">
           <motion.div
             layoutId={`title-${place.id}`}
@@ -179,6 +180,7 @@ export default function Place({params}:any) {
               {place.title}
             </motion.h1>
           </motion.div>
+          
           <motion.div
             initial="hidden"
             animate={pageAnimations}
@@ -204,6 +206,7 @@ export default function Place({params}:any) {
               </motion.p>
             ))}
           </motion.div>
+          
         </div>
       </div>
     </article>

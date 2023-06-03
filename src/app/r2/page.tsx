@@ -38,17 +38,11 @@ export default function Page() {
             className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
             initial="hidden"
             animate="showing"
-            exit={post.id === postIdRoutingTo ? "showing" : "hidden"}
+            exit={post.slug === postIdRoutingTo ? "showing" : "hidden"}
             variants={{
-              hidden: {
-                opacity: 0,
-              },
-              showing: {
-                opacity: 1,
-              },
-              hover: {
-                transform: 'translateY(-2px)',
-              },
+              hidden: { opacity: 0 },
+              showing: { opacity: 1},
+              hover: { transform: 'translateY(-2px)' },
             }}
             transition={{
               type: "spring",
