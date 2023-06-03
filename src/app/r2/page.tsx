@@ -1,136 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
-import getPostData from '@/context/blog/posts';
+import getPostData, {Place} from '@/context/blog/posts';
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 // import ExtLink from '@/components/anchor/external';
 
+
 export default function Page() {
   //-- simulate query to database
-  let data = getPostData();
+  let data:Place[] = getPostData();
 
-  //-- 
-  // const searchParams = useSearchParams();
-  let slugRoutingTo = (useSearchParams()).get("slug");
+  //-- Used to determine element to remain visible on navigate to [slug]
+  let slugRoutingTo:Place['slug'] = (useSearchParams()).get("slug") as Place['slug'];
 
   //-- Heights opposite from [slug]
   let heightFrom: number = 400;
   let heightTo: number = 200;
-
-  /**
-   * Builds the post data dynamically, returns to primary return.
-   */
-  function buildBlogData():any{
-    return (
-      data.map((post) => {
-        return (
-          <Link
-            key={post.slug}
-            href={`/r2/${post.slug}`}
-            passHref
-            scroll={false}
-            legacyBehavior
-          >
-                
-          {/** 
-           * Parent Element around each post.
-          */}
-          <motion.a
-            className="relative block mx-2 rounded-md shadow shadow-slate-900/40"
-            // className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
-            initial="hidden"
-            animate="showing"
-            exit={post.slug === slugRoutingTo ? "showing" : "hidden"}
-            variants={{
-              hidden: { opacity: .7 },
-              showing: { opacity: 1},
-              hover: { 
-                transform: 'translateY(-2px)',
-                // transition : {
-                //   type: "spring",
-                //   stiffness: 200,
-                //   damping: 10,
-                //   mass: .5,
-                //   duration: .1
-                // }
-              },
-            }}
-            // transition={{ ease: "easeInOut" }}
-            
-            whileHover={'hover'}
-          >
-            
-            {/**
-             * Container around image with gradient/blended background.
-            */}
-            <motion.div
-              layoutId={`image-wrapper-${post.slug}`}
-              className={`relative`}
-              // className={`relative bg-gradient-to-tr ${post.blend}`}
-              transition={{ ease: "easeOut" }}
-              initial={{ height: heightFrom }}
-              animate={{ height: heightTo }}
-              style={{ originX: 0.5 }}
-            >
-              
-              {/**
-               * Image of post.
-               */}
-              <motion.img
-                layoutId={`image-${post.slug}`}
-                src={post.image}
-                alt={post.title}
-                className="absolute w-full object-cover rounded-md"
-                initial={'initial'}
-                animate={'showing'}
-                whileHover={'hover'}
-                variants={{
-                  initial: {
-                    opacity: .9,
-                    height: heightFrom,
-                  },
-                  showing: {
-                    opacity: 0.9,
-                    height: heightTo
-                  },
-                  hover: {
-                    opacity: 1,
-                  },
-                }}
-                transition={{ 
-                  ease: "easeOut",
-                  duration: 0.2
-                }}
-                style={{
-                  originX: 1,
-                  objectPosition: post.position,
-                }}
-              />
-            </motion.div>
-            
-            {/**
-             * Container around Place Name.
-            */}
-            <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
-              <motion.div
-                layoutId={`title-${post.id}`}
-                transition={{ ease: "easeInOut" }}
-                animate={{ 
-                  color: "#f8fafc"
-                }}
-              >
-                <h3 className="block text-2xl font-semibold tracking-tighter">
-                  {post.title}
-                </h3>
-              </motion.div>
-            </div>
-          </motion.a>
-        </Link>
-      )
-    })
-  )}
-  
   
   //----------------------------------------------------------------------------
   //-- Render Page
@@ -148,7 +34,123 @@ export default function Page() {
         </div>
       </div>
 
-      {buildBlogData()}
+      {buildBlogData(data, slugRoutingTo, heightFrom, heightTo)}
     </section>
   );
 }
+
+
+/**
+   * Builds the post data dynamically, returns to primary return.
+   */
+function buildBlogData(
+  data          : Place[],
+  slugRoutingTo : Place['slug'],
+  heightFrom    : number,
+  heightTo      : number
+):JSX.Element[] {
+  return (
+    data && data.map((post) => {
+      return (
+        <Link
+          key={post.slug}
+          href={`/r2/${post.slug}`}
+          passHref
+          scroll={false}
+          legacyBehavior
+        >
+              
+        {/** 
+         * Parent Element around each post.
+        */}
+        <motion.a
+          className="relative block mx-2 rounded-md"
+          // className="relative block mx-2 overflow-hidden rounded-md shadow shadow-slate-900/40"
+          initial="hidden"
+          animate="showing"
+          whileHover={'hover'}
+          exit={post.slug === slugRoutingTo ? "showing" : "hidden"}
+          variants={{
+            hidden: { opacity: .7 },
+            showing: { opacity: 1},
+            hover: {  transform: 'translateY(-2px)' },
+          }}
+          // transition={{ ease: "easeInOut" }}
+          transition= {{
+              type: "spring",
+              stiffness: 150,
+              damping: 10,
+              mass: 1,
+            }}
+          
+        >
+          
+          {/**
+           * Container around image with gradient/blended background.
+          */}
+          <motion.div
+            layoutId={`image-wrapper-${post.slug}`}
+            className={`relative`}
+            // className={`relative bg-gradient-to-tr ${post.blend}`}
+            transition={{ ease: "easeOut" }}
+            initial={{ height: heightFrom }}
+            animate={{ height: heightTo }}
+            style={{ originX: 0.5 }}
+          >
+            
+            {/**
+             * Image of post.
+             */}
+            <motion.img
+              layoutId={`image-${post.slug}`}
+              src={post.image}
+              alt={post.title}
+              className="absolute w-full object-cover rounded-md shadow shadow-slate-900/40"
+              initial={'initial'}
+              animate={'showing'}
+              whileHover={'hover'}
+              variants={{
+                initial: {
+                  opacity: .9,
+                  height: heightFrom,
+                },
+                showing: {
+                  opacity: 0.9,
+                  height: heightTo
+                },
+                hover: {
+                  opacity: 1,
+                },
+              }}
+              transition={{ 
+                ease: "easeOut",
+                duration: 2
+              }}
+              style={{
+                originX: 1,
+                objectPosition: post.position,
+              }}
+            />
+          </motion.div>
+          
+          {/**
+           * Container around Place Name.
+          */}
+          <div className="absolute bottom-0 left-0 z-10 pb-4 pl-4">
+            <motion.div
+              layoutId={`title-${post.id}`}
+              transition={{ ease: "easeInOut" }}
+              animate={{ 
+                color: "#f8fafc"
+              }}
+            >
+              <h3 className="block text-2xl font-semibold tracking-tighter">
+                {post.title}
+              </h3>
+            </motion.div>
+          </div>
+        </motion.a>
+      </Link>
+    )
+  })
+)}

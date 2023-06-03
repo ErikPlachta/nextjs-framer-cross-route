@@ -1,6 +1,15 @@
 // import React from "react";
 
 
+export type Place = {
+  id: string;
+  title: string;
+  slug: string;
+  image: string;
+  position: string;
+  blend: string;
+  content: string;
+};
 
 /** Array of places containing each pages content.
  * 
@@ -13,7 +22,7 @@
  * @property {string} about     - The about text of the place.
  * 
  */
-export default function getPosts() {
+export default function getPosts():Place[] {
   return [
       {
         id: "1",
