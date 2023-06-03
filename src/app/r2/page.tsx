@@ -94,6 +94,7 @@ function buildBlogData(
               stiffness: 150,
               damping: 10,
               mass: 1,
+              duration: .1,
             }}
           
         >
@@ -124,20 +125,15 @@ function buildBlogData(
               whileHover={'hover'}
               variants={{
                 initial: {
-                  opacity: .7,
                   height: heightFrom,
                 },
                 showing: {
-                  opacity: 0.9,
                   height: heightTo
-                },
-                hover: {
-                  opacity: 1,
-                },
+                }
               }}
               transition={{ 
-                // ease: "easeOut",
-                // duration: .3,
+                ease: "easeInOut",
+                duration: 1,
               }}
               style={{
                 originX: 1,
